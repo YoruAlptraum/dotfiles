@@ -1,0 +1,55 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font, monospace";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window{
+    border-radius: 10px;
+    background: #010409;
+    color: #cdd6f4;
+}
+
+tooltip {
+    background: #010409;
+    border-radius: 10px;
+}
+
+#window,
+#clock,
+#pulseaudio,
+#network,
+#tray
+{
+    padding: .5px .5rem;
+}
+
+#tray {
+    margin-right: 10px;
+}
+
+#window {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#clock {
+    color: #fab387;
+    margin-right: 14px;
+}
+
+#network {
+    color: #f9e2af;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+}
+
+#pulseaudio.microphone {
+    color: #cba6f7;
+}
+

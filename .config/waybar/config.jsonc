@@ -1,0 +1,70 @@
+{
+	"layer": "top",
+	"position": "top",
+	"margin": "5 10 0",
+	"mod": "dock",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"height": 22,
+	"modules-left": ["tray"],
+	"modules-center": ["clock"],
+	"modules-right": [
+		"network",
+		"pulseaudio",
+		"pulseaudio#microphone"
+	],
+	"include": [],
+	"tray": {
+		"icon-size": 18,
+		"spacing": 10
+	},
+	"clock": { 
+		"timezone": "America/Sao_Paulo",
+		"format": "{:L%H:%M %a, %b %e}",
+		"tooltip-format": "{calendar}",
+		"calendar": {
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ffcc66'><b><u>{}</u></b></span>"
+			}
+		}
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon}",
+		"format-muted": "󰝟",
+		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
+		"scroll-step": 1,
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""]
+		}
+	},
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": " ",
+		"on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_SOURCE@ 5%+",
+		"on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_SOURCE@ 5%-",
+		"scroll-step": 1
+	},
+	"network": {
+		"format-wifi": "  {signalStrength}%",
+		"format-ethernet": " ",
+		"tooltip-format": "{essid} - {ifname} via {gwaddr}",
+		"format-linked": "{ifname} (No IP)",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ipaddr}/{cidr}"
+	}
+}
