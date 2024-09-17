@@ -3,8 +3,8 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Tab width
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- Set background transparency
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
