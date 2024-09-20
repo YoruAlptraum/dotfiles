@@ -14,12 +14,7 @@
   networking.hostName = "night"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true; # Enable networking
 
   time.timeZone = "America/Sao_Paulo"; # Set time zone.
 
@@ -49,7 +44,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alone = {
     isNormalUser = true;
-    description = "night";
+    description = "nix";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
@@ -57,10 +52,38 @@
 	programs = {
 		nix-ld.enable = true;
 		nix-ld.libraries = with pkgs; [
-		# Add missing dynamic libraries for unpackaged programs here
+			# Add missing dynamic libraries for unpackaged programs here
 
 		];
 		hyprland.enable = true;
+		steam = {
+			enable = true;
+			remotePlay.openFirewall = true;
+			dedicatedServer.openFirewall = true;
+			localNetworkGameTransfers.openFirewall = true;
+			# gamescope %command% and gamemoderun %command
+			# are steam launch options 
+			# vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
+			gamescopeSession.enable = true;
+		};
+		gamemode.enable = true;
+	};
+
+	# configurations for steam/gaming
+	hardware.opengl = {
+		enable = true;
+		driSupport = true;
+		driSupport32Bit = true;
+	};
+	services.xserver.videoDrivers = ["amdgpu"];
+
+	# audio/pipewire
+	security.rtkit.enable = true;
+	services.pipewire = {
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true;
 	};
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -70,8 +93,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -83,7 +104,7 @@
   # networking.firewall.enable = false;
 
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
+  # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # it's better to not change
   

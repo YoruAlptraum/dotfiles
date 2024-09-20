@@ -4,13 +4,14 @@
 	};
 
 	environment.systemPackages = with pkgs; [
-		# Desktop
+		# Apps 
 		firefox
 		wofi
+		gimp
+		libreoffice
 
 		# Terminal
 		kitty
-		zsh
 		starship
 		yazi
 		neovim
@@ -19,14 +20,20 @@
 		git 
 		stow
 		fastfetch
-		htop
+		btop
 		wget
 
+		# Screenshotting/recording
+		grim
+		slurp
+		swappy
+		wf-recorder
+
 		# Environment
-		hyprland
 		hyprlock
 		hyprpaper
 		waybar
+		wl-clipboard
 
 		# Sound
 		pipewire
@@ -35,6 +42,6 @@
 	fonts.packages = with pkgs; [
 		noto-fonts
 		noto-fonts-color-emoji
-
+		(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
 	];
 }
