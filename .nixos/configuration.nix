@@ -11,7 +11,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "night"; # Define your hostname.
+  networking.hostName = "nix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   networking.networkmanager.enable = true; # Enable networking
@@ -33,20 +33,27 @@
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "br";
-    variant = "";
-  };
+  services = {
+		xserver.xkb = {
+    	layout = "br";
+	    variant = "";
+  	};
+		displayManager.sddm = {
+			enable = true;
+			wayland.enable = true;
+		};
+	};
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alone = {
+  users.users.yoru = {
     isNormalUser = true;
     description = "nix";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+		shell = pkgs.zsh;
   };
 
 	programs = {
@@ -55,7 +62,22 @@
 			# Add missing dynamic libraries for unpackaged programs here
 
 		];
+		zsh = {
+			enable = true;
+			enableCompletion = true;
+			syntaxHighlighting.enable = true;
+		};
+
+		# nvim
+		neovim = {
+			enable = true;
+			defaultEditor = true;
+		};
+
+		# Hyprland
 		hyprland.enable = true;
+
+		# Steam
 		steam = {
 			enable = true;
 			remotePlay.openFirewall = true;

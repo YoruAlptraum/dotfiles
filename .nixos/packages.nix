@@ -14,7 +14,7 @@
 		kitty
 		starship
 		yazi
-		neovim
+		fzf
 
 		# CLI utils
 		git 
@@ -39,9 +39,20 @@
 		pipewire
 	];
 
-	fonts.packages = with pkgs; [
-		noto-fonts
-		noto-fonts-color-emoji
-		(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-	];
+	fonts = {
+		packages = with pkgs; [
+				noto-fonts
+				noto-fonts-cjk-sans
+				noto-fonts-color-emoji
+				(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+				# Steam fonts
+				source-code-pro
+				source-han-mono
+				source-han-sans
+				source-han-serif
+				wqy_zenhei
+		];
+		fontDir.enable = true;
+		fontconfig.enable = true;
+	};
 }
