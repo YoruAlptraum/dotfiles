@@ -9,18 +9,19 @@
 		wofi
 		gimp
 		libreoffice
+		dunst
 
 		# Terminal
 		kitty
 		starship
 		yazi
-		fzf
+		fastfetch
+		btop
 
 		# CLI utils
 		git 
 		stow
-		fastfetch
-		btop
+		fzf
 		wget
 
 		# Screenshotting/recording

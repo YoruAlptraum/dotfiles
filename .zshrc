@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
+# bindkey -e
 
 zstyle :compinstall filename '/home/maidenless/.zshrc'
 
