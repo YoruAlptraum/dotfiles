@@ -10,6 +10,7 @@
 		gimp
 		libreoffice
 		dunst
+		lutris
 
 		# Terminal
 		kitty
@@ -23,6 +24,8 @@
 		stow
 		fzf
 		wget
+		unzip
+		graalvm-ce
 
 		# Screenshotting/recording
 		grim
