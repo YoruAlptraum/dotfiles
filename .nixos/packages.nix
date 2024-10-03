@@ -30,6 +30,8 @@
 		# java
 		graalvm-ce
 
+		gcc
+
 		# Screenshotting/recording
 		grim
 		slurp

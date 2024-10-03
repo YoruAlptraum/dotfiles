@@ -15,6 +15,8 @@ eval "$(starship init zsh)"
 autoload -Uz compinit
 compinit
 
+alias la='ls -a --color=auto'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-
+alias nix-build='sudo nixos-rebuild switch --flake .'
+alias nix-test='sudo nixos-rebuild test --flake .'
