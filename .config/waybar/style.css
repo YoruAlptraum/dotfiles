@@ -1,21 +1,21 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font, monospace";
-    font-weight: bold;
-    font-size: 14px;
-    min-height: 0;
+	border: none;
+	border-radius: 0;
+	font-family: "JetBrainsMono Nerd Font, monospace";
+	font-weight: bold;
+	font-size: 14px;
+	min-height: 0;
 }
 
 window {
-    border-radius: 10px;
-		background: #010409;
-    color: #cdd6f4;
+	border-radius: 10px;
+	background: transparent;
+	color: #cdd6f4;
 }
 
 tooltip {
-    background: #010409;
-    border-radius: 10px;
+	background: #010409;
+	border-radius: 10px;
 }
 
 #window,
@@ -24,32 +24,41 @@ tooltip {
 #network,
 #tray
 {
-    padding: .5px .5rem;
+	padding: .5px 10px;
+}
+
+#clock,
+#pulseaudio,
+#network,
+#tray
+{
+	background: #010409;
+	border-radius: 11px;
 }
 
 #tray {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 #window {
-    margin-left: 60px;
-    margin-right: 60px;
+	margin-left: 60px;
+	margin-right: 60px;
 }
 
 #clock {
-    color: #fab387;
-    margin-right: 14px;
+	color: #fab387;
+	margin-right: 14px;
 }
 
 #network {
-    color: #f9e2af;
+	color: #f9e2af;
 }
 
 #pulseaudio {
-    color: #89b4fa;
+	color: #89b4fa;
 }
 
 #pulseaudio.microphone {
-    color: #cba6f7;
+	color: #cba6f7;
 }
 

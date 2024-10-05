@@ -91,7 +91,8 @@
 			remotePlay.openFirewall = true;
 			dedicatedServer.openFirewall = true;
 			localNetworkGameTransfers.openFirewall = true;
-			# gamescope %command% and gamemoderun %command
+			# gamescope %command% 
+			# gamemoderun %command%
 			# are steam launch options 
 			# vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
 			gamescopeSession.enable = true;
