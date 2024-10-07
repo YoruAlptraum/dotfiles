@@ -7,4 +7,4 @@ return {
        require('config.colorschemes.tokyonight')
      end,
   },
-} 
+}

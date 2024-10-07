@@ -7,24 +7,21 @@
 		nixpkgs-unstable.url = "github:/nixos/nixpkgs/nixos-unstable";
 	};
 
-	outputs = { self, nixpkgs, nixpkgs-unstable, ... }:
-		let
-			lib = nixpkgs.lib;
-		in {
-		nixosConfigurations = {
-			nix = lib.nixosSystem rec {
+	outputs = { self, nixpkgs, ... } @ inputs:
+		{
+			nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
+				specialArgs = { inherit inputs; };
 				modules = [
 					./configuration.nix
+					{ 
+						nixpkgs.overlays = [
+							(self: super: {
+								neovim = inputs.nixpkgs-unstable.neovim;
+							})
+						];
+					}
 				];
-				specialArgs = {
-					nixpkgs-unstable = import nixpkgs-unstable {
-						inherit system;
-						config.allowUnfree = true;
-					};
-				};
 			};
 		};
-	};
-
 }

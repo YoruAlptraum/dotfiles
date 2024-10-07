@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 	nixpkgs.config = {
 		allowUnfree = true;
 	};
@@ -27,10 +27,11 @@
 		unzip
 		ripgrep
 
-		# java
+		# Dependencies 
 		graalvm-ce
-
 		gcc
+		cargo
+		nodejs_22
 
 		# Screenshotting/recording
 		grim

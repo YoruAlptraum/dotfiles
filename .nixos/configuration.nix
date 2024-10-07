@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -79,7 +79,6 @@
 		neovim = {
 			enable = true;
 			defaultEditor = true;
-			# package = nixpkgs-unstable.neovim;
 		};
 
 		# Hyprland
