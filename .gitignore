@@ -2,3 +2,4 @@ libreoffice
 github-copilot
 unity3d
 .config/dconf/user
+.config/nvim/lazy-lock.json

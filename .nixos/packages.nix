@@ -31,7 +31,10 @@
 		graalvm-ce
 		gcc
 		cargo
-		nodejs_22
+		nodejs
+
+		# Langs
+		python3
 
 		# Screenshotting/recording
 		grim
