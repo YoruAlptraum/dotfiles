@@ -1,5 +1,10 @@
-libreoffice
-github-copilot
-unity3d
-.config/dconf/user
-.config/nvim/lazy-lock.json
+.config/*
+!.config/hypr
+!.config/kitty
+!.config/nvim
+!.config/pulse
+!.config/wofi
+!.config/swappy
+!.config/waybar
+!.config/wofi
+!.config/starship.toml
