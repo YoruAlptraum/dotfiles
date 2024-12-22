@@ -1,6 +1,6 @@
 format = """
 $python\
-[](fg:#390080 bg:#769ff0)\
+[](fg:#394260 bg:#769ff0)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
 $git_branch\
@@ -14,7 +14,7 @@ right_format = """
 """
 
 [directory]
-style = "fg:#ffffff bg:#769ff0"
+style = "fg:#394260 bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -36,7 +36,7 @@ format = '[[ $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 [python]
 # By default, Starship shows the Python version if a `.py` file is present.
 # This configures it to show the Python version and virtual environment when one is active.
-style = "bg:#390080"
+style = "fg:#769ff0 bg:#394260"
 format = "[(${virtualenv})]($style)"
 python_binary = "python3"
 symbol = ""

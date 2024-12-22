@@ -11,6 +11,8 @@
 		libreoffice
 		dunst
 		lutris
+		qbittorrent
+		vlc
 
 		# Terminal
 		kitty
@@ -32,6 +34,7 @@
 		gcc
 		cargo
 		nodejs
+		xwayland
 
 		# Langs
 		python3
