@@ -2,7 +2,7 @@
 	nixpkgs.config = {
 		allowUnfree = true;
 	};
-
+	
 	environment.systemPackages = with pkgs; [
 		# Apps 
 		firefox
@@ -13,6 +13,7 @@
 		lutris
 		qbittorrent
 		vlc
+		nomacs
 
 		# Terminal
 		kitty
@@ -26,7 +27,9 @@
 		stow
 		fzf
 		wget
+		zip
 		unzip
+		unrar
 		ripgrep
 
 		# Dependencies 
@@ -35,6 +38,9 @@
 		cargo
 		nodejs
 		xwayland
+		# for ASF
+		dotnet-runtime
+		icu
 
 		# Langs
 		python3

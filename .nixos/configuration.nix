@@ -51,6 +51,9 @@
 				user = "yoru";
 			};
 		};
+		archisteamfarm = {
+			enable = true;
+		};
 	};
 
   # Configure console keymap
