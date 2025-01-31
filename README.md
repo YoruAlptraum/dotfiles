@@ -1,3 +1,5 @@
-my dotfiles repo for nixos, i do not use home-manager just stow
+# my dotfiles repo - nixos 
+
+i use stow instead of home-manager for dotfiles
 
 ![Desktop](imgs/desktop.png)
