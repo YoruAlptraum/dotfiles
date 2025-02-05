@@ -6,6 +6,7 @@
 	environment.systemPackages = with pkgs; [
 		# Apps 
 		firefox
+		chromium
 		wofi
 		gimp
 		libreoffice
