@@ -36,6 +36,7 @@
 
   # Configure keymap in X11
   services = {
+		gnome.gnome-keyring.enable = true;
 		xserver.xkb = {
     	layout = "br";
 	    variant = "";
@@ -55,6 +56,9 @@
 			enable = true;
 		};
 	};
+
+	# Enable the Gnome keyring
+	security.pam.services.sddm.enableGnomeKeyring = true;
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
