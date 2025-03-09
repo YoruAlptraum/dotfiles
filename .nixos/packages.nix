@@ -15,6 +15,7 @@
 		qbittorrent
 		vlc
 		nomacs
+		vscode
 
 		# Terminal
 		kitty
