@@ -2,7 +2,7 @@
 	nixpkgs.config = {
 		allowUnfree = true;
 	};
-	
+
 	environment.systemPackages = with pkgs; [
 		# Apps 
 		firefox
@@ -33,6 +33,7 @@
 		unzip
 		unrar
 		ripgrep
+		dotool
 
 		# Dependencies 
 		graalvm-ce
