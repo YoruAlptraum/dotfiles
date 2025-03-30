@@ -8,3 +8,4 @@
 !.config/waybar
 !.config/wofi
 !.config/starship.toml
+!.config/btop
