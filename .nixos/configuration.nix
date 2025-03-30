@@ -125,12 +125,18 @@
 		pulse.enable = true;
 	};
 
-	
+	# setting default applications
   xdg.mime.defaultApplications = {
     "text/html" = "firefox.desktop";
     "x-scheme-handler/http" = "firefox.desktop";
     "x-scheme-handler/https" = "firefox.desktop";
   };
+
+	# automatic cleanup of old builds
+	nix.gc.automatic = true;
+	nix.gc.dates = "weekly";
+	nix.gc.options = "--delete-older-than 7d";
+	nix.settings.auto-optimise-store = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
