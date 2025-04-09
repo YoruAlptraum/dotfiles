@@ -1,4 +1,5 @@
 .config/*
+# * Ignore all files in the .config directory except the following:
 !.config/hypr
 !.config/kitty
 !.config/nvim
@@ -8,4 +9,4 @@
 !.config/waybar
 !.config/wofi
 !.config/starship.toml
-!.config/btop
+!.config/btop/btop.conf
