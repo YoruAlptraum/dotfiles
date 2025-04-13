@@ -1,10 +1,10 @@
-{ pkgs, pkgs-unstable, ... }: {
+{ pkgs, pkgs-unstable, inputs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   environment.systemPackages = (with pkgs-unstable; [
-    libgbm # dependency for zen-browser
+    inputs.zen-browser.packages."${system}".twilight-official # beta
   ])
 
   ++
