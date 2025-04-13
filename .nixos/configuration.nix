@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
-	  	./packages.nix
+      ./packages.nix
     ];
 
   # Bootloader.
@@ -19,46 +19,46 @@
   time.timeZone = "America/Sao_Paulo"; # Set time zone.
 
   i18n = {
-		supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_TW.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
-		defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
-		extraLocaleSettings = {
-			LC_ADDRESS = "en_US.UTF-8";
-			LC_IDENTIFICATION = "en_US.UTF-8";
-			LC_MEASUREMENT = "en_US.UTF-8";
-			LC_MONETARY = "en_US.UTF-8";
-			LC_NAME = "en_US.UTF-8";
-			LC_NUMERIC = "en_US.UTF-8";
-			LC_PAPER = "en_US.UTF-8";
-			LC_TELEPHONE = "en_US.UTF-8";
-			LC_TIME = "en_US.UTF-8";
-		};
-	};
+    supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_TW.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
+    defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+  };
 
   # Configure keymap in X11
   services = {
-		gnome.gnome-keyring.enable = true;
-		xserver.xkb = {
-    	layout = "br";
-	    variant = "";
-  	};
-		displayManager = {
-			sddm = {
-				enable = true;
-				wayland.enable = true;
-			};
-			defaultSession = "hyprland";
-			autoLogin = {
-				enable = true;
-				user = "yoru";
-			};
-		};
-		archisteamfarm = {
-			enable = true;
-		};
-	};
+    gnome.gnome-keyring.enable = true;
+    xserver.xkb = {
+      layout = "br";
+      variant = "";
+    };
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+      defaultSession = "hyprland";
+      autoLogin = {
+        enable = true;
+        user = "yoru";
+      };
+    };
+    archisteamfarm = {
+      enable = true;
+    };
+  };
 
-	# Enable the Gnome keyring
-	security.pam.services.sddm.enableGnomeKeyring = true;
+  # Enable the Gnome keyring
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   # Configure console keymap
   console.keyMap = "br-abnt2";
@@ -68,75 +68,75 @@
     isNormalUser = true;
     description = "nix";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-		shell = pkgs.zsh;
+    packages = with pkgs; [ ];
+    shell = pkgs.zsh;
   };
 
-	programs = {
-		nix-ld.enable = true;
-		nix-ld.libraries = with pkgs; [
-			# Add missing dynamic libraries for unpackaged programs here
+  programs = {
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      # Add missing dynamic libraries for unpackaged programs here
 
-		];
-		zsh = {
-			enable = true;
-			enableCompletion = true;
-			syntaxHighlighting.enable = true;
-		};
+    ];
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+    };
 
-		# nvim
-		neovim = {
-			enable = true;
-			defaultEditor = true;
-		};
+    # nvim
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
 
-		# Hyprland
-		hyprland.enable = true;
+    # Hyprland
+    hyprland.enable = true;
 
-		# Steam
-		steam = {
-			enable = true;
-			remotePlay.openFirewall = true;
-			dedicatedServer.openFirewall = true;
-			localNetworkGameTransfers.openFirewall = true;
-			# gamescope %command% 
-			# gamemoderun %command%
-			# are steam launch options 
-			# vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
-			gamescopeSession.enable = true;
-		};
-		gamemode.enable = true;
-	};
+    # Steam
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+      # gamescope %command% 
+      # gamemoderun %command%
+      # are steam launch options 
+      # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
+      gamescopeSession.enable = true;
+    };
+    gamemode.enable = true;
+  };
 
-	# configurations for steam/gaming
-	hardware.opengl = {
-		enable = true;
-		driSupport = true;
-		driSupport32Bit = true;
-	};
-	services.xserver.videoDrivers = ["amdgpu"];
+  # configurations for steam/gaming
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
-	# audio/pipewire
-	security.rtkit.enable = true;
-	services.pipewire = {
-		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
-		pulse.enable = true;
-	};
+  # audio/pipewire
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-	# setting default applications
+  # setting default applications
   xdg.mime.defaultApplications = {
     "text/html" = "firefox.desktop";
     "x-scheme-handler/http" = "firefox.desktop";
     "x-scheme-handler/https" = "firefox.desktop";
   };
 
-	# automatic cleanup of old builds
-	nix.gc.automatic = true;
-	nix.gc.dates = "weekly";
-	nix.gc.options = "--delete-older-than 7d";
-	nix.settings.auto-optimise-store = true;
+  # automatic cleanup of old builds
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 7d";
+  nix.settings.auto-optimise-store = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -159,6 +159,6 @@
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # it's better to not change
-  
-  nix.settings.experimental-features = ["nix-command" "flakes"]; # enable flakes
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
 }
