@@ -56,6 +56,9 @@
     # Langs
     python3
 
+    # Python packages
+    jupyter
+
     # Screenshotting/recording
     grim
     slurp
