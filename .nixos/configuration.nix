@@ -90,6 +90,11 @@
       defaultEditor = true;
     };
 
+    # file manager
+    yazi = {
+      enable = true;
+    };
+
     # Hyprland
     hyprland.enable = true;
 

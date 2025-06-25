@@ -26,7 +26,6 @@
     # Terminal
     kitty
     starship
-    yazi
     fastfetch
     btop
 
@@ -41,6 +40,7 @@
     ripgrep
     dotool # input automation
     cava # audio visualizer
+    usbutils # usb utilities
 
     # Dependencies 
     graalvm-ce
@@ -55,9 +55,6 @@
 
     # Langs
     python3
-
-    # Python packages
-    jupyter
 
     # Screenshotting/recording
     grim
