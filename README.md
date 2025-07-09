@@ -2,10 +2,11 @@
 
 i use stow instead of home-manager for dotfiles
 
-![Desktop](imgs/desktop.png)
+# Screenshots
 
-![wofi](imgs/wofi.png)
-
-![yazi](imgs/yazi.png)
-
-![btop](imgs/btop.png)
+| -                | -        | Screenshot                                               |
+| ---------------- | -------- | -------------------------------------------------------- |
+| window manager   | hyprland | <img src="imgs/desktop.png" alt="desktop" width="800" /> |
+| launcher         | wofi     | <img src="imgs/wofi.png" alt="wofi" width="800" />       |
+| file manager     | yazi     | <img src="imgs/yazi.png" alt="yazi" width="800" />       |
+| resource monitor | btop     | <img src="imgs/btop.png" alt="btop" width="800" />       |
