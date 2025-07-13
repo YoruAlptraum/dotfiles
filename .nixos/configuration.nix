@@ -67,10 +67,17 @@
   users.users.yoru = {
     isNormalUser = true;
     description = "nix";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd" # for vm
+    ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
+
+  # vm
+  virtualisation.libvirtd.enable = true;
 
   programs = {
     nix-ld.enable = true;
@@ -111,7 +118,14 @@
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
+
+    # vm
+    virt-manager.enable = true;
   };
+
+  # vm settings
+  virtualisation.spiceUSBRedirection.enable = true;
+  services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
   hardware.opengl = {
