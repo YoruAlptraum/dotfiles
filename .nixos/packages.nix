@@ -10,9 +10,11 @@
   ++
 
   (with pkgs; [
-    # Apps 
+    # browsers
     firefox
     chromium
+    brave
+    # Apps
     wofi
     gimp
     libreoffice
