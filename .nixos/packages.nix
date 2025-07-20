@@ -14,6 +14,14 @@
     firefox
     chromium
     brave
+    (vivaldi.override {
+      commandLineArgs = [
+        "--enable-blink-features=MiddleClickAutoscroll"
+        "--ozone-platform=wayland"
+        "--enable-features=UseOzonePlatform"
+        "--use-gl=desktop"
+      ];
+    })
     # Apps
     wofi
     gimp
