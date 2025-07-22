@@ -11,8 +11,6 @@
 
   (with pkgs; [
     # browsers
-    firefox
-    chromium
     brave
     (vivaldi.override {
       commandLineArgs = [
@@ -76,7 +74,10 @@
     hyprlock
     hyprpaper
     waybar
+
+    # Clipboard
     wl-clipboard
+    cliphist
 
     # Sound
     pipewire
