@@ -37,9 +37,12 @@
   # Configure keymap in X11
   services = {
     gnome.gnome-keyring.enable = true;
-    xserver.xkb = {
-      layout = "br";
-      variant = "";
+    xserver = {
+      videoDrivers = [ "amdgpu" ];
+      xkb = {
+        layout = "br";
+        variant = "";
+      };
     };
     displayManager = {
       sddm = {
@@ -47,10 +50,10 @@
         wayland.enable = true;
       };
       defaultSession = "hyprland";
-      autoLogin = {
-        enable = true;
-        user = "yoru";
-      };
+      # autoLogin = {
+      #   enable = true;
+      #   user = "yoru";
+      # };
     };
     archisteamfarm = {
       enable = true;
@@ -111,13 +114,17 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
-      # gamescope %command% 
+      # gamescope -W 1920 -H 1080 -r 60 -- %command%
       # gamemoderun %command%
       # are steam launch options 
       # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
 
     # vm
     virt-manager.enable = true;
@@ -133,7 +140,6 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # audio/pipewire
   security.rtkit.enable = true;
