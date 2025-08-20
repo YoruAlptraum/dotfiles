@@ -12,14 +12,7 @@
   (with pkgs; [
     # browsers
     brave
-    (vivaldi.override {
-      commandLineArgs = [
-        "--enable-blink-features=MiddleClickAutoscroll"
-        "--ozone-platform=wayland"
-        "--enable-features=UseOzonePlatform"
-        "--use-gl=desktop"
-      ];
-    })
+    librewolf
     # Apps
     wofi
     gimp
