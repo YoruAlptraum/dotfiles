@@ -158,10 +158,12 @@
   };
 
   # automatic cleanup of old builds
-  nix.gc.automatic = true;
-  nix.gc.dates = "weekly";
-  nix.gc.options = "--delete-older-than 7d";
-  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+  nix.settings.auto-optimise-store = true; # deduplicate store files and optimize store
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -10,19 +10,19 @@
   ++
 
   (with pkgs; [
-    # browsers
-    brave
-    librewolf
     # Apps
     wofi
     gimp
     libreoffice
     dunst
     lutris
-    # qbittorrent
     vlc
     nomacs
     vscode
+    # qbittorrent
+    # browsers
+    brave
+    librewolf
 
     # Terminal
     kitty
@@ -42,6 +42,22 @@
     dotool # input automation
     cava # audio visualizer
     usbutils # usb utilities
+    inotify-tools # file system monitoring
+
+    # Screenshotting/recording
+    grim
+    slurp
+    swappy
+    wf-recorder
+
+    # Clipboard
+    wl-clipboard
+    cliphist
+
+    # Environment
+    hyprlock
+    hyprpaper
+    waybar
 
     # Dependencies 
     graalvm-ce
@@ -50,27 +66,13 @@
     nodejs
     xwayland
     nixpkgs-fmt # nix formatter
+
     # for ASF
     dotnet-runtime
     icu
 
     # Langs
     python3
-
-    # Screenshotting/recording
-    grim
-    slurp
-    swappy
-    wf-recorder
-
-    # Environment
-    hyprlock
-    hyprpaper
-    waybar
-
-    # Clipboard
-    wl-clipboard
-    cliphist
 
     # Sound
     pipewire
