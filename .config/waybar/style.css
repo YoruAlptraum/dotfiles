@@ -21,6 +21,8 @@ tooltip {
 #window,
 #clock,
 #pulseaudio,
+#cpu,
+#custom-mem,
 #network,
 #tray
 {
@@ -29,6 +31,8 @@ tooltip {
 
 #clock,
 #pulseaudio,
+#cpu,
+#custom-mem,
 #network,
 #tray
 {
