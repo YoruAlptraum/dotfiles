@@ -1,6 +1,12 @@
-# my dotfiles repo - nixos
+# My dotfiles repo - nixos
 
-i use stow instead of home-manager for dotfiles
+This is just my repo for my own dotfiles, still getting the hang of nix and stuf but feel free to reference a thing or two if you find anything interesting.
+
+# Getting started
+
+clone this repo on home `~` and use `stow .` to create symlinks
+
+use alias `nixos-build` to build system
 
 # Screenshots
 

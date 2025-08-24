@@ -18,5 +18,5 @@ compinit
 alias la='ls -a --color=auto'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias nixos-build='sudo nixos-rebuild switch --flake .'
-alias nixos-test='sudo nixos-rebuild test --flake .'
+alias nixos-build='sudo nixos-rebuild switch --flake ~/dotfiles/.nixos/'
+alias nixos-test='sudo nixos-rebuild test --flake ~/dotfiles/.nixos/'
