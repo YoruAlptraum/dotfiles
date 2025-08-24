@@ -1,0 +1,17 @@
+#TabsToolbar {
+  display: none;
+}
+
+#sidebar-box #sidebar-header {
+  display: none !important;
+}
+
+/* Hide url if not focused */
+/* 
+  #main-window:not([customizing]) #navigator-toolbox:not(:focus-within):not(:hover) {
+    margin-top: -45px;
+  }
+  #navigator-toolbox {
+    transition: 0.2s margin-top ease-out;
+  } 
+*/

@@ -5,6 +5,6 @@
 
 !abi54lrh.default
 !abi54lrh.default/search.json.mozlz4
-!abi54lrh.default/prefs.js
-!abi54lrh.default/chrome/
+!abi54lrh.default/chrome
+!abi54lrh.default/chrome/*
 !abi54lrh.default/user.js
