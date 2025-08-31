@@ -1,15 +1,9 @@
-{ pkgs, pkgs-unstable, inputs, ... }: {
+{ pkgs, inputs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
-  environment.systemPackages = (with pkgs-unstable; [
-    inputs.zen-browser.packages."${system}".twilight-official # beta
-  ])
-
-  ++
-
-  (with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # Apps
     wofi
     gimp
