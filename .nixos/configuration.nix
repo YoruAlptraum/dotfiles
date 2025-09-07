@@ -50,10 +50,10 @@
         wayland.enable = true;
       };
       defaultSession = "hyprland";
-      # autoLogin = {
-      #   enable = true;
-      #   user = "yoru";
-      # };
+      autoLogin = {
+        enable = true;
+        user = "yoru";
+      };
     };
     archisteamfarm = {
       enable = true;
@@ -135,10 +135,8 @@
   services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # audio/pipewire
