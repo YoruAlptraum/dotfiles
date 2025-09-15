@@ -135,10 +135,8 @@
   services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # audio/pipewire
@@ -185,7 +183,7 @@
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # it's better to not change
+  system.stateVersion = "25.05"; # it's better to not change
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
 }

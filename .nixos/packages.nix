@@ -78,7 +78,6 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       # Steam fonts
       source-code-pro
       source-han-mono

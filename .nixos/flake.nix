@@ -3,7 +3,7 @@
 
   inputs = {
     # pkgs channel
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
   };
 
   outputs = { self, nixpkgs, ... } @ inputs:
@@ -17,7 +17,7 @@
         modules = [ 
           {
             nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
-          } 
+          }
           ./configuration.nix 
         ];
         specialArgs = {
