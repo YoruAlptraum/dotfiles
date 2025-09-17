@@ -45,15 +45,10 @@
       };
     };
     displayManager = {
-      sddm = {
+      ly = {
         enable = true;
-        wayland.enable = true;
       };
-      defaultSession = "hyprland";
-      # autoLogin = {
-      #   enable = true;
-      #   user = "yoru";
-      # };
+      sessionPackages = [pkgs.hyprland];
     };
     archisteamfarm = {
       enable = true;

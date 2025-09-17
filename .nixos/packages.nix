@@ -52,6 +52,7 @@
     hyprlock
     hyprpaper
     waybar
+    ly
 
     # Dependencies 
     graalvm-ce
