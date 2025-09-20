@@ -79,6 +79,7 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
+      font-awesome
       # Steam fonts
       source-code-pro
       source-han-mono
