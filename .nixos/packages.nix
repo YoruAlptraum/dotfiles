@@ -26,7 +26,6 @@
 
     # CLI utils
     git
-    stow
     fzf
     wget
     zip

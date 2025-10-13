@@ -7,16 +7,14 @@
       ./packages.nix
     ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nix"; # Define your hostname.
+  networking.hostName = "nix";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   networking.networkmanager.enable = true; # Enable networking
 
-  time.timeZone = "America/Sao_Paulo"; # Set time zone.
+  time.timeZone = "America/Sao_Paulo";
 
   i18n = {
     supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_TW.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
@@ -158,27 +156,12 @@
   };
   nix.settings.auto-optimise-store = true; # deduplicate store files and optimize store
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # it's better to not change
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
+  system.stateVersion = "25.05"; # it's better to not change
 }
