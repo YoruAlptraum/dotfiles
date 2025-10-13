@@ -4,9 +4,7 @@ This is just my repo for my own dotfiles, still getting the hang of nix and stuf
 
 # Getting started
 
-clone this repo on home `~` and use `stow .` to create symlinks
-
-use alias `nixos-build` to build system
+clone this repo on home `~` and use `sudo nixos-rebuild switch --flake ~/dotfiles/.nixos/` to build the system for the first time, after the first build you can use the alias `nixos-build` instead
 
 # Screenshots
 
