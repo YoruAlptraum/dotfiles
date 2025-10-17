@@ -59,7 +59,7 @@
     cargo
     nodejs
     xwayland
-    nixpkgs-fmt # nix formatter
+    nixfmt # nix formatter
 
     # for ASF
     dotnet-runtime

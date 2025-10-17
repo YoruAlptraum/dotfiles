@@ -1,5 +1,5 @@
-{ config, pkgs, ...}: 
-let 
+{ config, pkgs, ... }:
+let
   dotfiles = "${config.home.homeDirectory}/dotfiles/";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
@@ -12,16 +12,16 @@ let
     wofi = "wofi";
     "starship.toml" = "starship.toml";
   };
-in
-{
+in {
   home = {
     username = "yoru";
     homeDirectory = "/home/yoru";
     stateVersion = "25.05";
 
-    packages = with pkgs; [
-      
-    ];
+    packages = with pkgs;
+      [
+
+      ];
     file = {
       ".bashrc".source = ../.bashrc;
       ".zshrc".source = ../.zshrc;
@@ -30,10 +30,29 @@ in
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = create_symlink "${dotfiles}/.config/${subpath}";
-    recursive = true;    
+    recursive = true;
   }) configs;
-  
+
   programs = {
-    
+    vscode = {
+      enable = true;
+
+      userSettings = {
+        "editor.formatOnSave" = true;
+        "workbench.sideBar.location" = "right";
+        "workbench.colorTheme" = "Tokyo Night";
+      };
+
+      keybindings = [{
+        key = "ctrl+'";
+        command = "workbench.action.terminal.toggleTerminal";
+        when = "terminal.active";
+      }];
+
+      extensions = with pkgs.vscode-extensions; [
+        enkia.tokyo-night
+        jnoortheen.nix-ide
+      ];
+    };
   };
 }
