@@ -54,5 +54,16 @@ in {
         jnoortheen.nix-ide
       ];
     };
+
+    chromium = {
+      enable = true;
+      package = pkgs.brave;
+
+      extensions = [
+        { id = "khncfooichmfjbepaaaebmommgaepoid"; } # Unhook
+        { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+        { id = "faeadnfmdfamenfhaipofoffijhlnkif"; } # Black Theme
+      ];
+    };
   };
 }
