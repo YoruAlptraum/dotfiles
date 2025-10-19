@@ -1,7 +1,5 @@
 { pkgs, inputs, ... }: {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  nixpkgs.config = { allowUnfree = true; };
 
   environment.systemPackages = (with pkgs; [
     # Apps
@@ -59,6 +57,7 @@
     cargo
     nodejs
     xwayland
+    xwayland-satellite
     nixfmt # nix formatter
 
     # for ASF

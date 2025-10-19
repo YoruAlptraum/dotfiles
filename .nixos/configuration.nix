@@ -1,11 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./packages.nix
-    ];
+  imports = [ ./hardware-configuration.nix ./packages.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -17,7 +13,12 @@
   time.timeZone = "America/Sao_Paulo";
 
   i18n = {
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "zh_TW.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_TW.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+      "ko_KR.UTF-8/UTF-8"
+    ];
     defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
     extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
@@ -43,14 +44,10 @@
       };
     };
     displayManager = {
-      ly = {
-        enable = true;
-      };
-      sessionPackages = [pkgs.hyprland];
+      ly = { enable = true; };
+      sessionPackages = [ pkgs.hyprland pkgs.niri ];
     };
-    archisteamfarm = {
-      enable = true;
-    };
+    archisteamfarm = { enable = true; };
   };
 
   # Enable the Gnome keyring
@@ -77,10 +74,11 @@
 
   programs = {
     nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-      # Add missing dynamic libraries for unpackaged programs here
+    nix-ld.libraries = with pkgs;
+      [
+        # Add missing dynamic libraries for unpackaged programs here
 
-    ];
+      ];
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -94,12 +92,11 @@
     };
 
     # file manager
-    yazi = {
-      enable = true;
-    };
+    yazi = { enable = true; };
 
-    # Hyprland
+    # compositor
     hyprland.enable = true;
+    niri.enable = true;
 
     # Steam
     steam = {
@@ -128,9 +125,7 @@
   services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics = { enable = true; };
 
   # audio/pipewire
   security.rtkit.enable = true;
@@ -154,7 +149,8 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  nix.settings.auto-optimise-store = true; # deduplicate store files and optimize store
+  nix.settings.auto-optimise-store =
+    true; # deduplicate store files and optimize store
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -162,6 +158,7 @@
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
+  nix.settings.experimental-features =
+    [ "nix-command" "flakes" ]; # enable flakes
   system.stateVersion = "25.05"; # it's better to not change
 }
