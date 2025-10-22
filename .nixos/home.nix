@@ -29,31 +29,40 @@ in {
     };
   };
 
-  xdg.configFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${dotfiles}/.config/${subpath}";
-    recursive = true;
-  }) configs;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = "*";
+    };
+    configFile = builtins.mapAttrs (name: subpath: {
+      source = create_symlink "${dotfiles}/.config/${subpath}";
+      recursive = true;
+    }) configs;
+  };
 
   programs = {
     vscode = {
       enable = true;
 
-      userSettings = {
-        "editor.formatOnSave" = true;
-        "workbench.sideBar.location" = "right";
-        "workbench.colorTheme" = "Tokyo Night";
+      profiles.default = {
+        userSettings = {
+          "editor.formatOnSave" = true;
+          "workbench.sideBar.location" = "right";
+          "workbench.colorTheme" = "Tokyo Night";
+        };
+
+        keybindings = [{
+          key = "ctrl+'";
+          command = "workbench.action.terminal.toggleTerminal";
+          when = "terminal.active";
+        }];
+
+        extensions = with pkgs.vscode-extensions; [
+          enkia.tokyo-night
+          jnoortheen.nix-ide
+        ];
       };
-
-      keybindings = [{
-        key = "ctrl+'";
-        command = "workbench.action.terminal.toggleTerminal";
-        when = "terminal.active";
-      }];
-
-      extensions = with pkgs.vscode-extensions; [
-        enkia.tokyo-night
-        jnoortheen.nix-ide
-      ];
     };
 
     chromium = {

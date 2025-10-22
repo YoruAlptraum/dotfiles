@@ -61,6 +61,7 @@
     xwayland
     xwayland-satellite
     nixfmt # nix formatter
+    xdg-desktop-portal-gtk
 
     # for ASF
     dotnet-runtime
