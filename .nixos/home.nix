@@ -11,6 +11,7 @@ let
     waybar = "waybar";
     wofi = "wofi";
     "starship.toml" = "starship.toml";
+    niri = "niri";
   };
 in {
   home = {
@@ -58,6 +59,8 @@ in {
     chromium = {
       enable = true;
       package = pkgs.brave;
+
+      commandLineArgs = [ "--disable-features=ClipboardHistoryMenu" ];
 
       extensions = [
         { id = "khncfooichmfjbepaaaebmommgaepoid"; } # Unhook

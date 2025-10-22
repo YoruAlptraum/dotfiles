@@ -4,6 +4,7 @@
   environment.systemPackages = (with pkgs; [
     # Apps
     wofi
+    fuzzel
     gimp
     libreoffice
     dunst
@@ -47,6 +48,7 @@
 
     # Environment
     hyprlock
+    swaylock
     hyprpaper
     waybar
     ly
