@@ -13,6 +13,10 @@ let
     "starship.toml" = "starship.toml";
     niri = "niri";
   };
+
+  cursorPkg = pkgs.afterglow-cursors-recolored;
+  cursorName = "Afterglow-Recolored-Catppuccin-Macchiato";
+  themeName = "Tokyonight-Dark";
 in {
   home = {
     username = "yoru";
@@ -26,6 +30,26 @@ in {
     file = {
       ".bashrc".source = ../.bashrc;
       ".zshrc".source = ../.zshrc;
+    };
+
+    pointerCursor = {
+      package = cursorPkg;
+      name = cursorName;
+    };
+
+    sessionVariables = {
+      XCURSOR_PATH = "${pkgs.afterglow-cursors-recolored}/share/icons";
+      XCURSOR_THEME = cursorName;
+    };
+  };
+
+  gtk = {
+    enable = true;
+
+    # Set the GTK theme
+    theme = {
+      name = themeName;
+      package = pkgs.tokyonight-gtk-theme;
     };
   };
 
