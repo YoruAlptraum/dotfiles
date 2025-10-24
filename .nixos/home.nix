@@ -51,6 +51,12 @@ in {
       name = themeName;
       package = pkgs.tokyonight-gtk-theme;
     };
+
+    # Set the icon theme
+    iconTheme = {
+      name = "Dracula";
+      package = pkgs.dracula-icon-theme;
+    };
   };
 
   xdg = {

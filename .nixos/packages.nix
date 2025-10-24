@@ -47,8 +47,8 @@
     cliphist
 
     # Environment
-    hyprlock
     swaylock
+    hyprlock
     hyprpaper
     waybar
     ly
