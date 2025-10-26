@@ -25,8 +25,11 @@ in {
 
     packages = with pkgs;
       [
-
+        (pkgs.writeShellScriptBin "set-wallpaper" ''
+          swww img "${config.home.homeDirectory}/Pictures/Mafuyu_44_trained_art.png" --transition-type center
+        '')
       ];
+
     file = {
       ".bashrc".source = ../.bashrc;
       ".zshrc".source = ../.zshrc;
@@ -72,6 +75,7 @@ in {
   };
 
   programs = {
+
     vscode = {
       enable = true;
 
