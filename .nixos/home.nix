@@ -26,7 +26,7 @@ in {
     packages = with pkgs;
       [
         (pkgs.writeShellScriptBin "set-wallpaper" ''
-          swww img "${config.home.homeDirectory}/Pictures/Mafuyu_44_trained_art.png" --transition-type center
+          swww img "${config.home.homeDirectory}/dotfiles/imgs/wallpapers/mafuyu.png" --transition-type center
         '')
       ];
 

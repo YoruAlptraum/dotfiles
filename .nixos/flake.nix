@@ -10,19 +10,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
-    in
-    {
+    in {
       nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [         
+        modules = [
           {
-            nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable flakes
+            nix.settings.experimental-features =
+              [ "nix-command" "flakes" ]; # enable flakes
           }
-          ./configuration.nix 
+          ./configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -33,9 +33,7 @@
             };
           }
         ];
-        specialArgs = {
-          inherit inputs outputs;
-        };
+        specialArgs = { inherit inputs outputs; };
       };
     };
 }
