@@ -1,6 +1,6 @@
 # My dotfiles repo - nixos
 
-This is just my repo for my own dotfiles, still getting the hang of nix and stuf but feel free to reference a thing or two if you find anything interesting.
+Repo for all my dotfiles.
 
 # Getting started
 

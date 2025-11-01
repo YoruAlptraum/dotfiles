@@ -69,6 +69,13 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+// Named workspaces
+workspace "browser"
+workspace "code"
+workspace "misc1"
+workspace "misc2"
+workspace "steam"
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -250,12 +257,10 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
+// Spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
-// See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "set-wallpaper"
@@ -275,7 +280,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// Ask the clients to omit their client-side decorations if possible.
+// Ask clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
@@ -283,7 +288,6 @@ hotkey-overlay {
 prefer-no-csd
 
 // Screenshots save location
-// A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H-%M-%S.png"
 
@@ -302,24 +306,11 @@ animations {
 }
 
 // Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
+// More on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -360,6 +351,7 @@ binds {
     Mod+T hotkey-overlay-title="Terminal" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Fuzzel App Launcher" { spawn "fuzzel"; }
     Mod+E hotkey-overlay-title="Yazi File Manager" { spawn-sh "kitty -e yazi"; }
+    Ctrl+Shift+Escape hotkey-overlay-title="Btop Task Manager" { spawn-sh "kitty -e btop"; }
 
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
