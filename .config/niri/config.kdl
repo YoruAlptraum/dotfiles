@@ -309,6 +309,12 @@ animations {
 // More on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
+// round corners for all windows.
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
@@ -327,10 +333,10 @@ window-rule {
     // block-out-from "screencast"
 }
 
-// enable rounded corners for all windows.
 window-rule {
-    geometry-corner-radius 6
-    clip-to-geometry true
+    match app-id=r#"^steam"#
+
+    open-on-workspace "steam"
 }
 
 binds {
