@@ -2,21 +2,25 @@
   description = "flake";
 
   inputs = {
-    # pkgs channel
+    # stable channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # unstable channel
+    nixpkgs-unstable.url = "github:/nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      # IMPORTANT: we're using "libgbm"
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let
-      inherit (self) outputs;
-      system = "x86_64-linux";
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let inherit (self) outputs;
     in {
       nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
-        inherit system;
         modules = [
           {
             nix.settings.experimental-features =
@@ -33,7 +37,7 @@
             };
           }
         ];
-        specialArgs = { inherit inputs outputs; };
+        specialArgs = { inherit inputs; };
       };
     };
 }

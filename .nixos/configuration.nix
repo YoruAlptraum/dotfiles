@@ -77,7 +77,6 @@
     nix-ld.libraries = with pkgs;
       [
         # Add missing dynamic libraries for unpackaged programs here
-
       ];
     zsh = {
       enable = true;
