@@ -12,7 +12,7 @@
     vlc
     nomacs
     vscode
-    # qbittorrent
+    qbittorrent
     # browsers
     brave
     inputs.zen-browser.packages."${system}".twilight # beta
