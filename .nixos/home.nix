@@ -46,6 +46,11 @@ in {
     };
   };
 
+  # set GNOME dconf settings
+  dconf.settings = {
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+  };
+
   gtk = {
     enable = true;
 
@@ -60,6 +65,9 @@ in {
       name = "Dracula";
       package = pkgs.dracula-icon-theme;
     };
+
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
   };
 
   xdg = {
@@ -75,7 +83,6 @@ in {
   };
 
   programs = {
-
     vscode = {
       enable = true;
 
