@@ -15,7 +15,7 @@
     qbittorrent
     # browsers
     brave
-    inputs.zen-browser.packages."${system}".twilight # beta
+    inputs.zen-browser.packages."${system}".twilight
 
     # Terminal
     kitty

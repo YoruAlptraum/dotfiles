@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles/";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -118,5 +118,6 @@ in {
         { id = "faeadnfmdfamenfhaipofoffijhlnkif"; } # Black Theme
       ];
     };
+
   };
 }
