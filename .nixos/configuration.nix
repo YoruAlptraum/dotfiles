@@ -45,7 +45,7 @@
     };
     displayManager = {
       ly = { enable = true; };
-      sessionPackages = [ pkgs.hyprland pkgs.niri ];
+      sessionPackages = [ pkgs.niri ];
     };
     archisteamfarm = { enable = true; };
   };
@@ -94,7 +94,6 @@
     yazi = { enable = true; };
 
     # compositor
-    hyprland.enable = true;
     niri.enable = true;
 
     # Steam

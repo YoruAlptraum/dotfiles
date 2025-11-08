@@ -48,8 +48,6 @@
     # Environment
     swaylock
     swww
-    hyprlock
-    hyprpaper
     waybar
     ly
 

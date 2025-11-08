@@ -10,6 +10,5 @@ clone this repo on home `~` and use `sudo nixos-rebuild switch --flake ~/dotfile
 
 | -                | -        | Screenshot                                         |
 | ---------------- | -------- | -------------------------------------------------- |
-| window manager   | hyprland | <img src="imgs/screenshots/main.png" alt="main" width="800" /> |
 | file manager     | yazi     | <img src="imgs/screenshots/yazi.png" alt="yazi" width="800" /> |
 | resource monitor | btop     | <img src="imgs/screenshots/btop.png" alt="btop" width="800" /> |

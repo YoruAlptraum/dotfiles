@@ -4,7 +4,6 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     btop = "btop";
-    hypr = "hypr";
     kitty = "kitty";
     nvim = "nvim";
     swappy = "swappy";

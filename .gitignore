@@ -1,6 +1,5 @@
 .config/*
 # * Ignore all files in the .config directory except the following:
-!.config/hypr
 !.config/kitty
 !.config/nvim
 !.config/swappy
