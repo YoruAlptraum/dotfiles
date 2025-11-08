@@ -3,10 +3,9 @@
 !.config/hypr
 !.config/kitty
 !.config/nvim
-!.config/wofi
 !.config/swappy
 !.config/waybar
-!.config/wofi
 !.config/niri
 !.config/starship.toml
 !.config/btop/btop.conf
+!.config/fuzzel

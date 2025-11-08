@@ -9,9 +9,9 @@ let
     nvim = "nvim";
     swappy = "swappy";
     waybar = "waybar";
-    wofi = "wofi";
     "starship.toml" = "starship.toml";
     niri = "niri";
+    fuzzel = "fuzzel";
   };
 
   cursorPkg = pkgs.afterglow-cursors-recolored;
