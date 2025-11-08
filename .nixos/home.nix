@@ -11,6 +11,7 @@ let
     "starship.toml" = "starship.toml";
     niri = "niri";
     fuzzel = "fuzzel";
+    flameshot = "flameshot";
   };
 
   cursorPkg = pkgs.afterglow-cursors-recolored;

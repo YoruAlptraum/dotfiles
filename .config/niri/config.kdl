@@ -596,7 +596,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print hotkey-overlay-title=null { screenshot; }
+    Print hotkey-overlay-title=null { spawn-sh "flameshot gui"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 

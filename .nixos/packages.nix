@@ -36,9 +36,9 @@
     inotify-tools # file system monitoring
 
     # Screenshotting/recording
+    (flameshot.override { enableWlrSupport = true; })
     grim
     slurp
-    swappy
     wf-recorder
 
     # Clipboard
