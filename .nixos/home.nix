@@ -18,6 +18,8 @@ let
   cursorName = "Afterglow-Recolored-Catppuccin-Macchiato";
   themeName = "Tokyonight-Dark";
 in {
+  imports = [ inputs.zen-browser.homeModules.twilight ];
+
   home = {
     username = "yoru";
     homeDirectory = "/home/yoru";
@@ -83,6 +85,67 @@ in {
   };
 
   programs = {
+    zen-browser = {
+      enable = true;
+      policies = {
+        AutofillAddressEnabled = true;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+        Cookies = { Behavior = "reject"; };
+        DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+        DisableSetDesktopBackground = true;
+        DisplayBookmarksToolbar = "never";
+
+        ExtensionSettings = {
+          "*" = { allowed_types = [ "extension" ]; };
+          "uBlock0@raymondhill.net" = {
+            installation_mode = "force_installed";
+            install_url =
+              "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+            default_area = "navbar";
+            private_browsing = true;
+          };
+        };
+
+        Homepage = {
+          Locked = true;
+          StartPage = "previous-session";
+        };
+
+        GenerativeAI = {
+          Enabled = false;
+          Chatbot = false;
+          LinkPreviews = false;
+          TabGroups = false;
+        };
+      };
+
+      profiles.default = {
+        isDefault = true;
+        name = "Default";
+        settings = {
+          "zen.workspaces.continue-where-left-off" = true;
+          "zen.tabs.show-newtab-vertical" = false;
+          "zen.tabs.vertical" = true;
+          "middlemouse.paste" = false;
+          "general.autoScroll" = true;
+        };
+      };
+    };
+
     vscode = {
       enable = true;
 

@@ -17,27 +17,26 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
-    let inherit (self) outputs;
-    in {
-      nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
-        modules = [
-          {
-            nix.settings.experimental-features =
-              [ "nix-command" "flakes" ]; # enable flakes
-          }
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.yoru = import ./home.nix;
-              backupFileExtension = "backup";
-            };
-          }
-        ];
-        specialArgs = { inherit inputs; };
-      };
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, ... }: {
+    nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        {
+          nix.settings.experimental-features =
+            [ "nix-command" "flakes" ]; # enable flakes
+        }
+        ./configuration.nix
+        inputs.home-manager.nixosModules.default
+        {
+          home-manager = {
+            extraSpecialArgs = { inherit inputs; };
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.yoru = import ./home.nix;
+            backupFileExtension = "backup";
+          };
+        }
+      ];
     };
+  };
 }
