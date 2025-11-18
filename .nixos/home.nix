@@ -87,7 +87,54 @@ in {
   programs = {
     zen-browser = {
       enable = true;
-      policies = {
+      policies = let
+        mkExtensionSettings = builtins.mapAttrs (_: settings: {
+          installation_mode = "force_installed";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/${settings.pluginId}/latest.xpi";
+          default_area = settings.defaultArea;
+          private_browsing = settings.privateBrowsing;
+          allowed_types = [ "extension" ];
+        });
+      in {
+        ExtensionSettings = mkExtensionSettings {
+          "uBlock0@raymondhill.net" = {
+            pluginId = "ublock-origin";
+            defaultArea = "navbar";
+            privateBrowsing = true;
+          };
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+            pluginId = "bitwarden-password-manager";
+            defaultArea = "navbar";
+            privateBrowsing = true;
+          };
+          "addon@darkreader.org" = {
+            pluginId = "darkreader";
+            defaultArea = "menupanel";
+            privateBrowsing = true;
+          };
+          "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
+            pluginId = "yomitan";
+            defaultArea = "menupanel";
+            privateBrowsing = false;
+          };
+          "sponsorBlocker@ajay.app" = {
+            pluginId = "sponsorblock";
+            defaultArea = "menupanel";
+            privateBrowsing = false;
+          };
+          "myallychou@gmail.com" = {
+            pluginId = "youtube-recommended-videos";
+            defaultArea = "navbar";
+            privateBrowsing = false;
+          };
+          "{458160b9-32eb-4f4c-87d1-89ad3bdeb9dc}" = {
+            pluginId = "youtube-anti-translate";
+            defaultArea = "menupanel";
+            privateBrowsing = false;
+          };
+        };
+
         AutofillAddressEnabled = true;
         AutofillCreditCardEnabled = false;
         DisableAppUpdate = true;
@@ -108,17 +155,6 @@ in {
         DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
         DisableSetDesktopBackground = true;
         DisplayBookmarksToolbar = "never";
-
-        ExtensionSettings = {
-          "*" = { allowed_types = [ "extension" ]; };
-          "uBlock0@raymondhill.net" = {
-            installation_mode = "force_installed";
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            default_area = "navbar";
-            private_browsing = true;
-          };
-        };
 
         Homepage = {
           Locked = true;
