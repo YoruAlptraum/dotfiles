@@ -151,7 +151,7 @@ in {
           Cryptomining = true;
           Fingerprinting = true;
         };
-        Cookies = { Behavior = "reject"; };
+        Cookies = { Behavior = "reject-tracker-and-partition-foreign"; };
         DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
         DisableSetDesktopBackground = true;
         DisplayBookmarksToolbar = "never";
