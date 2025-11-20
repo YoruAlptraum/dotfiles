@@ -45,7 +45,7 @@
     cliphist
 
     # Environment
-    swaylock
+    swaylock-effects
     swww
     waybar
     ly

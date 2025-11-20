@@ -12,6 +12,7 @@ let
     niri = "niri";
     fuzzel = "fuzzel";
     flameshot = "flameshot";
+    swaylock = "swaylock";
   };
 
   cursorPkg = pkgs.afterglow-cursors-recolored;

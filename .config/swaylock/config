@@ -1,0 +1,80 @@
+# ==============================================
+# swaylock-effects settings
+# ==============================================
+clock
+timestr=%H:%M
+datestr=%a, %Y.%m.%d
+
+indicator
+indicator-radius=150
+indicator-thickness=8
+
+# ==============================================
+# classic swaylock settings
+# ==============================================
+
+ignore-empty-password
+
+image=~/dotfiles/imgs/wallpapers/mafuyu.png
+
+# no Caps Lock text, only current Caps Lock state (color) on indicator
+disable-caps-lock-text
+indicator-caps-lock
+
+# ==============================================
+# colors
+# ==============================================
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+separator-color=00000000
+# =======================
+# default
+# =======================
+ring-color=7fc8ffff
+inside-color=00000055
+text-color=ffffffff
+# segment
+key-hl-color=000000dd
+# backspace
+bs-hl-color=000088cc
+
+# =======================
+# caps lock on
+# =======================
+ring-caps-lock-color=aa00aaff
+inside-caps-lock-color=66006655
+text-caps-lock-color=ffffffff
+# segment
+caps-lock-key-hl-color=000000dd
+# backspace
+caps-lock-bs-hl-color=ee00eedd
+
+# =======================
+# clear
+# =======================
+ring-clear-color=7fc8ffff
+inside-clear-color=00000030
+text-clear-color=00000000
+
+# =======================
+# verifying
+# =======================
+ring-ver-color=7fc8ffff
+inside-ver-color=7fc8ff55
+text-ver-color=00000000
+
+# =======================
+# invalid
+# =======================
+ring-wrong-color=aa0000ff
+inside-wrong-color=aa000055
+text-wrong-color=00000000
+
+# show-keyboard-layout
+# font-size=
+# layout-bg-color=
+# layout-border-color=
+# layout-text-color=
