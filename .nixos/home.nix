@@ -24,7 +24,7 @@ in {
   home = {
     username = "yoru";
     homeDirectory = "/home/yoru";
-    stateVersion = "25.05";
+    stateVersion = "25.05"; # do not change this value
 
     packages = with pkgs;
       [

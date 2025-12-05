@@ -1,75 +1,81 @@
-{ pkgs, inputs, ... }: {
-  nixpkgs.config = { allowUnfree = true; };
+{ pkgs, inputs, ... }:
+{
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
-  environment.systemPackages = (with pkgs; [
-    # Apps
-    fuzzel
-    gimp
-    libreoffice
-    dunst
-    lutris
-    vlc
-    nomacs
-    vscode
-    qbittorrent
-    # browsers
-    brave
+  environment.systemPackages = (
+    with pkgs;
+    [
+      # Apps
+      fuzzel
+      gimp
+      libreoffice
+      dunst
+      lutris
+      vlc
+      nomacs
+      vscode
+      qbittorrent
+      # browsers
+      brave
 
-    # Terminal
-    kitty
-    starship
-    fastfetch
-    btop
+      # Terminal
+      kitty
+      starship
+      fastfetch
+      btop
 
-    # CLI utils
-    git
-    fzf
-    wget
-    zip
-    unzip
-    unrar
-    ripgrep
-    dotool # input automation
-    cava # audio visualizer
-    usbutils # usb utilities
-    inotify-tools # file system monitoring
+      # CLI utils
+      git
+      fzf
+      wget
+      zip
+      unzip
+      unrar
+      ripgrep
+      dotool # input automation
+      cava # audio visualizer
+      usbutils # usb utilities
+      inotify-tools # file system monitoring
 
-    # Screenshotting/recording
-    (flameshot.override { enableWlrSupport = true; })
-    grim
-    slurp
-    wf-recorder
+      # Screenshotting/recording
+      (flameshot.override { enableWlrSupport = true; })
+      grim
+      slurp
+      wf-recorder
 
-    # Clipboard
-    wl-clipboard
-    cliphist
+      # Clipboard
+      wl-clipboard
+      cliphist
 
-    # Environment
-    swaylock-effects
-    swww
-    waybar
-    ly
+      # Environment
+      swaylock-effects
+      swww
+      waybar
+      ly
 
-    # Dependencies 
-    graalvm-ce
-    gcc
-    cargo
-    nodejs
-    xwayland
-    xwayland-satellite
-    nixfmt # nix formatter
-    xdg-desktop-portal-gtk
+      # Dependencies
+      graalvmPackages.graalvm-ce
+      gcc
+      cargo
+      nodejs
+      xwayland
+      xwayland-satellite
+      nixfmt # nix formatter
+      xdg-desktop-portal-gtk
 
-    # for ASF
-    dotnet-runtime
-    icu
+      # for ASF
+      dotnet-runtime
+      icu
 
-    # Langs
-    python3
+      # Langs
+      python3
 
-    # Sound
-    pipewire
-  ]);
+      # Sound
+      pipewire
+    ]
+  );
 
   fonts = {
     packages = with pkgs; [
