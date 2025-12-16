@@ -17,6 +17,8 @@
       nomacs
       vscode
       qbittorrent
+      mcomix
+
       # browsers
       brave
 
@@ -52,8 +54,8 @@
       # Environment
       swaylock-effects
       swww
-      waybar
       ly
+      waybar
 
       # Dependencies
       graalvmPackages.graalvm-ce
