@@ -1,7 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ ./hardware-configuration.nix ./packages.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./packages.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -31,6 +39,28 @@
       LC_TELEPHONE = "en_US.UTF-8";
       LC_TIME = "en_US.UTF-8";
     };
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        ignoreUserConfig = true;
+        addons = with pkgs; [
+          fcitx5-mozc
+        ];
+        settings = {
+          inputMethod = {
+            "Groups/0" = {
+              Name = "Default";
+              "Default Layout" = "us";
+              DefaultIM = "keyboard-us";
+            };
+            "Groups/0/Items/0".Name = "keyboard-us";
+            "Groups/0/Items/1".Name = "mozc";
+          };
+        };
+      };
+    };
   };
 
   # Configure keymap in X11
@@ -44,10 +74,16 @@
       };
     };
     displayManager = {
-      ly = { enable = true; };
-      sessionPackages = [ pkgs.niri ];
+      ly = {
+        enable = true;
+      };
+      sessionPackages = [
+        pkgs.niri
+      ];
     };
-    archisteamfarm = { enable = true; };
+    archisteamfarm = {
+      enable = true;
+    };
   };
 
   # Enable the Gnome keyring
@@ -74,10 +110,9 @@
 
   programs = {
     nix-ld.enable = true;
-    nix-ld.libraries = with pkgs;
-      [
-        # Add missing dynamic libraries for unpackaged programs here
-      ];
+    nix-ld.libraries = with pkgs; [
+      # Add missing dynamic libraries for unpackaged programs here
+    ];
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -91,7 +126,9 @@
     };
 
     # file manager
-    yazi = { enable = true; };
+    yazi = {
+      enable = true;
+    };
 
     # compositor
     niri.enable = true;
@@ -102,10 +139,10 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
+      # steam launch options
       # gamescope -W 1920 -H 1080 -r 60 -- %command%
       # gamemoderun %command%
-      # are steam launch options 
-      # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
+      # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
@@ -123,7 +160,9 @@
   services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+  };
 
   # audio/pipewire
   security.rtkit.enable = true;
@@ -147,8 +186,7 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  nix.settings.auto-optimise-store =
-    true; # deduplicate store files and optimize store
+  nix.settings.auto-optimise-store = true; # deduplicate store files and optimize store
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -156,7 +194,9 @@
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  nix.settings.experimental-features =
-    [ "nix-command" "flakes" ]; # enable flakes
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ]; # enable flakes
   system.stateVersion = "25.05"; # it's better to not change
 }

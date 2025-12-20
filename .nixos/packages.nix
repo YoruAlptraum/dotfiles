@@ -56,6 +56,7 @@
       swww
       ly
       waybar
+      quickshell
 
       # Dependencies
       graalvmPackages.graalvm-ce
