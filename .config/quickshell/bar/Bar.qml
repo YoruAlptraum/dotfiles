@@ -51,7 +51,7 @@ Scope {
 
                         Text {
                             id: timeText
-                            color: Globals.colors.color6
+                            color: Globals.colors.hl1
                             font.pixelSize: 13
                             font.bold: true
                             text: Globals.time
@@ -78,7 +78,7 @@ Scope {
 
                         Text {                            
                             id: dateText
-                            color: Globals.colors.color6
+                            color: Globals.colors.hl1
                             font.pixelSize: 13
                             font.bold: true
                             text: Globals.date

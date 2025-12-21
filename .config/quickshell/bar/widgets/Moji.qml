@@ -50,7 +50,7 @@ Rectangle {
             text: root.symbols[root.index]
 
             font.pixelSize: 14
-            color: Globals.colors.color6
+            color: Globals.colors.hl1
             anchors.centerIn: parent
         }
 
@@ -68,7 +68,7 @@ Rectangle {
         Label {
             font.hintingPreference: Font.PreferFullHinting
             font.pixelSize: 11
-            color: Globals.colors.color6
+            color: Globals.colors.hl1
             text: "Carpe Diem"
         }
     }

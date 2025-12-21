@@ -9,25 +9,9 @@ Singleton {
     readonly property bool toolTip: true
     readonly property var popupContext: PopupContext {}
 
-    readonly property var fallbackColors: ({
-            "colors": {
-                "color0": "181818",
-                "color1": "3f425e",
-                "color2": "5d463e",
-                "color3": "5a4c73",
-                "color4": "906070",
-                "color5": "b1948a",
-                "color6": "c8c1ad",
-                "color7": "c5c5c5",
-                "color8": "515151",
-                "color9": "3f425e",
-                "color10": "5d463e",
-                "color11": "5a4c73",
-                "color12": "906070",
-                "color13": "b1948a",
-                "color14": "c8c1ad",
-                "color15": "c5c5c5"
-            }
+    readonly property var fallbackColors: ({            
+            "bg1": "#181818",
+            "hl1": "#3f425e",
         })
 
     readonly property var colors: colorManager.colorsLoaded ? colorManager.currentColors : fallbackColors

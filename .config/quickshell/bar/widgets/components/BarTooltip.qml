@@ -97,7 +97,7 @@ LazyLoader {
                         onPaint: {
                             var ctx = getContext("2d");
                             ctx.clearRect(0, 0, width, height);
-                            ctx.fillStyle = "#dd" + Globals.colors.color6;
+                            ctx.fillStyle = Globals.colors.bg1;
                             ctx.beginPath();
                             ctx.moveTo(width / 2, 0);
                             ctx.lineTo(width, height);
@@ -108,7 +108,7 @@ LazyLoader {
                     }
 
                     ClippingRectangle {
-                        color: "#" + Globals.colors.color0
+                        color: Globals.colors.bg1
                         radius: 6
                         anchors.horizontalCenter: parent.horizontalCenter
                         contentInsideBorder: true
