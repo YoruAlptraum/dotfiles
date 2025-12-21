@@ -30,6 +30,7 @@ Rectangle {
 
     Item {
         width: label.implicitWidth + 5
+        height: label.implicitHeight + 5
         anchors.centerIn: parent
 
         Rectangle {
@@ -49,8 +50,7 @@ Rectangle {
             text: root.symbols[root.index]
 
             font.pixelSize: 14
-            font.family: "Readex Pro"
-            color: "#" + Globals.colors.colors.color6
+            color: Globals.colors.color6
             anchors.centerIn: parent
         }
 
@@ -61,16 +61,14 @@ Rectangle {
         }
     }
 
-
     Components.BarTooltip {
         relativeItem: mouseAreaButton.containsMouse ? hoverBackground : null
         offset: 3
 
         Label {
             font.hintingPreference: Font.PreferFullHinting
-            font.family: Globals.secondaryFont
             font.pixelSize: 11
-            color: "white"
+            color: Globals.colors.color6
             text: "Carpe Diem"
         }
     }

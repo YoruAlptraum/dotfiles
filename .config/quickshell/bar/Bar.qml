@@ -3,6 +3,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick.Layouts
 import "widgets" as Widgets
+import qs
 
 Scope {
     id: rootScope
@@ -30,51 +31,61 @@ Scope {
 
             Rectangle {
                 id: bar
-                color: "transparent"
                 anchors.centerIn: parent
-                anchors {
-                    fill: parent
-                    margins: 6
-                }
 
                 RowLayout {
                     id: centerPiece
-                    implicitWidth: timeText.implicitWidth + dateText.implicitWidth + mojiWidget.implicitWidth + 40
-                    implicitHeight: root.implicitHeight
+                    Layout.preferredWidth: timeText.implicitWidth + dateText.implicitWidth + mojiWidget.implicitWidth
+                    Layout.preferredHeight: root.implicitHeight
                     anchors {
                         centerIn: parent
                     }
+                    spacing: 1
 
                     Rectangle {
-                        implicitWidth: 120
-                        implicitHeight: centerPiece.implicitHeight
-                        color: "transparent"
+                        Layout.preferredWidth: 110
+                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
+                        color: '#000000'
+                        topLeftRadius: 10
+                        bottomLeftRadius: 10
 
                         Text {
                             id: timeText
-                            color: "#ffffff"
-                            text: Time.time
-                            anchors.centerIn: parent
+                            color: Globals.colors.color6
+                            font.pixelSize: 13
+                            font.bold: true
+                            text: Globals.time
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
                         }
                     }
 
                     Widgets.Moji {
                         id: mojiWidget
-                        color: "transparent"
-                        implicitWidth: 100
-                        implicitHeight: centerPiece.implicitHeight
+                        color: "#000"
+                        Layout.preferredWidth: 90
+                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
                     }
 
                     Rectangle {
-                        implicitWidth: 120
-                        implicitHeight: centerPiece.implicitHeight
-                        color: "transparent"
+                        Layout.preferredWidth: 110
+                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
+                        color: "#000"
+                        topRightRadius: 10
+                        bottomRightRadius: 10
 
-                        Text {
+                        Text {                            
                             id: dateText
-                            color: "#ffffff"
-                            text: Time.date
-                            anchors.centerIn: parent
+                            color: Globals.colors.color6
+                            font.pixelSize: 13
+                            font.bold: true
+                            text: Globals.date
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
                         }
                     }
                 }

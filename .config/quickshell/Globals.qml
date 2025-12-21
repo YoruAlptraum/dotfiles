@@ -6,15 +6,8 @@ import Quickshell.Io
 Singleton {
     id: root
     
-    property bool notificationsEnabled: true
-    property var date: new Date()
-    readonly property string font: "Readex Pro"
     readonly property bool toolTip: true
-    readonly property color backgroundColor: "#BB" + colors.colors.color0
-    readonly property string secondaryFont: "Rubik"
     readonly property var popupContext: PopupContext {}
-    readonly property string homeDir: Quickshell.env("HOME")
-    readonly property string cacheDir: Quickshell.env("XDG_CACHE_HOME")
 
     readonly property var fallbackColors: ({
             "colors": {
@@ -39,7 +32,18 @@ Singleton {
 
     readonly property var colors: colorManager.colorsLoaded ? colorManager.currentColors : fallbackColors
 
-    property var colorComponents: []
+    readonly property string date: {
+        Qt.formatDateTime(clock.date, "MMM d yyyy")
+    }
+
+    readonly property string time: {
+        Qt.formatDateTime(clock.date, "hh:mm, ddd")
+    }
+
+    SystemClock {
+        id: clock
+        precision: SystemClock.Seconds
+    }
 
     QtObject {
         id: colorManager
@@ -70,13 +74,6 @@ Singleton {
                 colorsLoaded = false;
             }
         }
-    }
-
-    Timer {
-        interval: 1000
-        repeat: true
-        running: true
-        onTriggered: root.date = new Date()
     }
 
     signal colorReloadRequested
