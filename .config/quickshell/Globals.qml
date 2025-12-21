@@ -9,12 +9,11 @@ Singleton {
     readonly property bool toolTip: true
     readonly property var popupContext: PopupContext {}
 
-    readonly property var fallbackColors: ({            
-            "bg1": "#181818",
-            "hl1": "#3f425e",
+    readonly property var colors: ({            
+            "bg1": "#15171a",
+            "hl0": "#7fc8ff",
+            "hl1": '#ffcfb1'
         })
-
-    readonly property var colors: colorManager.colorsLoaded ? colorManager.currentColors : fallbackColors
 
     readonly property string date: {
         Qt.formatDateTime(clock.date, "MMM d yyyy")
@@ -29,47 +28,4 @@ Singleton {
         precision: SystemClock.Seconds
     }
 
-    QtObject {
-        id: colorManager
-        property var currentColors: ({})
-        property bool colorsLoaded: false
-
-        property FileView colorFile: FileView {
-            path: Qt.resolvedUrl("./colors-qs.json")
-            preload: true
-            watchChanges: true
-            onFileChanged: {
-                colorManager.reloadColors();
-            }
-            onLoaded: {
-                colorManager.reloadColors();
-            }
-        }
-
-        function reloadColors() {
-            colorFile.reload();
-            try {
-                if (!colorFile.text()) {
-                    return;
-                }
-                currentColors = JSON.parse(colorFile.text());
-                colorsLoaded = true;
-            } catch (e) {
-                colorsLoaded = false;
-            }
-        }
-    }
-
-    signal colorReloadRequested
-    onColorReloadRequested: {
-        colorManager.reloadColors();
-    }
-
-    function reloadColors() {
-        colorManager.reloadColors();
-    }
-
-    Component.onCompleted: {
-        colorManager.reloadColors();
-    }
 }
