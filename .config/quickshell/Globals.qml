@@ -11,15 +11,22 @@ Singleton {
 
     readonly property var colors: ({            
             "bg1": "#15171a",
-            "hl0": "#7fc8ff",
-            "hl1": '#ffcfb1'
-        })
+            "hl0": '#ffcfb1',
+            "hl1": '#9ad3ff'
+    })
 
+    // date
     readonly property string date: {
         Qt.formatDateTime(clock.date, "MMM d yyyy")
     }
 
-    readonly property string time: {
+    // time detailed (with seconds)
+    readonly property string timed: {
+        Qt.formatDateTime(clock.date, "hh:mm:ss")
+    }
+
+    // time simplified with weekday
+    readonly property string timew: {
         Qt.formatDateTime(clock.date, "hh:mm, ddd")
     }
 
@@ -27,5 +34,4 @@ Singleton {
         id: clock
         precision: SystemClock.Seconds
     }
-
 }

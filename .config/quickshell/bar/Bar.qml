@@ -1,8 +1,9 @@
 import QtQuick
-import Quickshell
-import Quickshell.Io
 import QtQuick.Layouts
+import QtQuick.Controls
+import Quickshell
 import "widgets" as Widgets
+import "widgets/components" as Components
 import qs
 
 Scope {
@@ -20,7 +21,7 @@ Scope {
             color: "transparent"
             implicitHeight: 22
             margins {
-                top: 10                
+                top: 10      
             }
 
             anchors {
@@ -30,11 +31,39 @@ Scope {
             }
 
             Rectangle {
-                id: bar
+                id: leftPiece
+                anchors.left: parent.left
+                
+                RowLayout {
+                    Layout.preferredHeight: root.implicitHeight
+                    spacing: 1
+                    anchors {
+                        left: parent.left
+                    }
+
+                    Rectangle {
+                        id: tray
+                        color: "transparent"
+                        Layout.preferredWidth: 150
+                        Layout.preferredHeight: parent.Layout.preferredHeight
+                        topRightRadius: 10
+                        bottomRightRadius: 10
+
+                        Widgets.SysTray {
+                            id: sysTray
+                            Layout.preferredWidth: 100
+                            Layout.preferredHeight: parent.Layout.preferredHeight
+                        }
+                    }
+
+                }
+            }
+
+            Rectangle {
+                id: centerPiece
                 anchors.centerIn: parent
 
                 RowLayout {
-                    id: centerPiece
                     Layout.preferredWidth: timeText.implicitWidth + dateText.implicitWidth + mojiWidget.implicitWidth
                     Layout.preferredHeight: root.implicitHeight
                     anchors {
@@ -44,8 +73,8 @@ Scope {
 
                     Rectangle {
                         Layout.preferredWidth: 110
-                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
-                        color: '#000000'
+                        Layout.preferredHeight: parent.Layout.preferredHeight
+                        color: '#000'
                         topLeftRadius: 10
                         bottomLeftRadius: 10
 
@@ -54,7 +83,7 @@ Scope {
                             color: Globals.colors.hl1
                             font.pixelSize: 13
                             font.bold: true
-                            text: Globals.time
+                            text: Globals.timew
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                                 verticalCenter: parent.verticalCenter
@@ -66,12 +95,12 @@ Scope {
                         id: mojiWidget
                         color: "#000"
                         Layout.preferredWidth: 90
-                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
+                        Layout.preferredHeight: parent.Layout.preferredHeight
                     }
 
                     Rectangle {
                         Layout.preferredWidth: 110
-                        Layout.preferredHeight: centerPiece.Layout.preferredHeight
+                        Layout.preferredHeight: parent.Layout.preferredHeight
                         color: "#000"
                         topRightRadius: 10
                         bottomRightRadius: 10
@@ -90,6 +119,7 @@ Scope {
                     }
                 }
             }
+            
         }
     }
 }

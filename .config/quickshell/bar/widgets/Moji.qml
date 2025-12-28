@@ -1,16 +1,13 @@
 import QtQuick
-import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Controls
+import Quickshell.Widgets
 import Quickshell
 import "components" as Components
 import qs
 
 Rectangle {
     id: root
-    anchors {
-        horizontalCenter: parent.horizontalCenter
-    }
 
     color: "transparent"
 
@@ -66,8 +63,7 @@ Rectangle {
         offset: 3
 
         Label {
-            font.hintingPreference: Font.PreferFullHinting
-            font.pixelSize: 11
+            font.pixelSize: 12
             color: Globals.colors.hl1
             text: "Carpe Diem"
         }
