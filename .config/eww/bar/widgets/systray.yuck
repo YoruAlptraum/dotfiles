@@ -1,0 +1,30 @@
+(defvar reveal-tray true)
+(defwidget tray []
+  (box
+    :class "systray"
+    :orientation "h"
+    :spacing "10"
+    :space-evenly false
+    
+    (eventbox
+      :class "btn systray-toggle"
+      :cursor "pointer"
+      :width "20"
+      :onclick "eww update reveal-tray=${!reveal-tray}"
+      :tooltip {reveal-tray ? "close tray" : "open tray"}
+      {reveal-tray ? "◀" : "▶"}
+    )
+    
+    (revealer
+      :reveal {reveal-tray}
+      :transition "slideright"
+      :duration "200ms"
+      (systray
+        :width "0"
+        :spacing "5"
+        :orientation "h"
+        :icon-size "20"
+        :prepend-new false
+      )
+    ))
+)

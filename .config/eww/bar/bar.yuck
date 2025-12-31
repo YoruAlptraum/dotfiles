@@ -1,41 +1,79 @@
+(include "bar/widgets/systray.yuck")
+
 (defwindow bar
   :monitor "0"
   :geometry (geometry
-    :width "10"
-  :anchor "top center")
+    :anchor "top center"
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "30"
+  )
   :exclusive true ; wayland equivalent of reserve to auto reserve space
   :stacking "fg"
   :windowtype "dock"
   :wm-ignore false
   (box
     :orientation "h"
-    :class "center-piece"
-    :halign "center"
-    :space-evenly false
-    :spacing "1"
+    :halign "fill"
+    :hexpand true
     
-    (eventbox
-      :class "btn clock"
-      :cursor "pointer"
-      :width "140"
+    (box
+      :orientation "h"
+      :class "left-piece"
+      :halign "start"
+      :space-evenly false
+      :spacing "1"
       :hexpand true
-      :onclick "eww update show-seconds=${!show-seconds}"
-    "${show-seconds ? times : time}")
+      (tray)
+    )
     
-    (eventbox
-      :class "btn moji"
-      :cursor "pointer"
-      :width "100"
-      :onclick "notify-send carpe diem"
-      :tooltip "carpe diem"
-    "＾◉ ∀ ◉＾")
+    (box
+      :orientation "h"
+      :class "center-piece"
+      :halign "center"
+      :space-evenly false
+      :spacing "1"
+      
+      (eventbox
+        :class "btn clock"
+        :cursor "pointer"
+        :width "140"
+        :hexpand true
+        :onclick "eww update show-seconds=${!show-seconds}"
+      "${show-seconds ? times : time}")
+      
+      (eventbox
+        :class "btn moji"
+        :cursor "pointer"
+        :width "100"
+        :onclick "notify-send carpe diem"
+        :tooltip "carpe diem"
+      "＾◉ ∀ ◉＾")
+      
+      (eventbox
+        :class "btn calendar"
+        :cursor "pointer"
+        :width "140"
+        :hexpand true
+      "${date}")
+    )
     
-    (eventbox
-      :class "btn calendar"
-      :cursor "pointer"
-      :width "140"
-      :hexpand true
-    "${date}")
+    (box
+      :orientation "h"
+      :class "right-piece"
+      :halign "end"
+      :space-evenly false
+      :spacing "1"
+      
+      (eventbox
+        :class "btn"
+        :cursor "pointer"
+        :width "100"
+        :onclick "notify-send carpe diem"
+        :tooltip "carpe diem"
+      "")
+    )
   )
 )
 
@@ -59,4 +97,3 @@
   :run-while bar-visible
   `date +"%b %d %Y"`
 )
-

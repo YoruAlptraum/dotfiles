@@ -1,12 +1,17 @@
 .bar {
   font-size: 14px;
-  min-height: 30px;
   background-color: transparent;
-  font-weight: 600;  
+  font-weight: 600;    
+}
+
+.systray {
+  padding: 0 15px 0 20px;
+  background-color: #000000;
+  border-bottom-right-radius: 15px;
 }
 
 .center-piece {
-  color: #7fc8ff;
+  color: #7fc8ff;  
 }
 
 .btn {
