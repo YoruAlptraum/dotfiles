@@ -1,7 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ ./hardware-configuration.nix ./packages.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./packages.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -44,10 +52,14 @@
       };
     };
     displayManager = {
-      ly = { enable = true; };
+      ly = {
+        enable = true;
+      };
       sessionPackages = [ pkgs.niri ];
     };
-    archisteamfarm = { enable = true; };
+    archisteamfarm = {
+      enable = true;
+    };
   };
 
   # Enable the Gnome keyring
@@ -74,10 +86,9 @@
 
   programs = {
     nix-ld.enable = true;
-    nix-ld.libraries = with pkgs;
-      [
-        # Add missing dynamic libraries for unpackaged programs here
-      ];
+    nix-ld.libraries = with pkgs; [
+      # Add missing dynamic libraries for unpackaged programs here
+    ];
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -91,7 +102,9 @@
     };
 
     # file manager
-    yazi = { enable = true; };
+    yazi = {
+      enable = true;
+    };
 
     # compositor
     niri.enable = true;
@@ -104,8 +117,8 @@
       localNetworkGameTransfers.openFirewall = true;
       # gamescope -W 1920 -H 1080 -r 60 -- %command%
       # gamemoderun %command%
-      # are steam launch options 
-      # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s 
+      # are steam launch options
+      # vimjoyer video on settings https://www.youtube.com/watch?v=qlfm3MEbqYA&t=213s
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
@@ -123,7 +136,9 @@
   services.spice-vdagentd.enable = true;
 
   # configurations for steam/gaming
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+  };
 
   # audio/pipewire
   security.rtkit.enable = true;
@@ -147,8 +162,7 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  nix.settings.auto-optimise-store =
-    true; # deduplicate store files and optimize store
+  nix.settings.auto-optimise-store = true; # deduplicate store files and optimize store
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -156,7 +170,9 @@
   # It's perfectly fine and recommended to leave this value at the release version of the first install of this system.
   # Before changing this value read the documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  nix.settings.experimental-features =
-    [ "nix-command" "flakes" ]; # enable flakes
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ]; # enable flakes
   system.stateVersion = "25.05"; # it's better to not change
 }

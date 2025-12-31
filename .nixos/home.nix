@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles/";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -13,12 +18,14 @@ let
     fuzzel = "fuzzel";
     flameshot = "flameshot";
     swaylock = "swaylock";
+    eww = "eww";
   };
 
   cursorPkg = pkgs.afterglow-cursors-recolored;
   cursorName = "Afterglow-Recolored-Catppuccin-Macchiato";
   themeName = "Tokyonight-Dark";
-in {
+in
+{
   imports = [ inputs.zen-browser.homeModules.twilight ];
 
   home = {
@@ -26,12 +33,11 @@ in {
     homeDirectory = "/home/yoru";
     stateVersion = "25.05"; # do not change this value
 
-    packages = with pkgs;
-      [
-        (pkgs.writeShellScriptBin "set-wallpaper" ''
-          swww img "${config.home.homeDirectory}/dotfiles/imgs/wallpapers/mafuyu.png" --transition-type center
-        '')
-      ];
+    packages = with pkgs; [
+      (pkgs.writeShellScriptBin "set-wallpaper" ''
+        swww-daemon & swww img "${config.home.homeDirectory}/dotfiles/imgs/wallpapers/mafuyu.png" --transition-type center
+      '')
+    ];
 
     file = {
       ".bashrc".source = ../.bashrc;
@@ -51,7 +57,9 @@ in {
 
   # set GNOME dconf settings
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
   };
 
   gtk = {
@@ -69,8 +77,12 @@ in {
       package = pkgs.dracula-icon-theme;
     };
 
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
-    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
   };
 
   xdg = {
@@ -88,87 +100,92 @@ in {
   programs = {
     zen-browser = {
       enable = true;
-      policies = let
-        mkExtensionSettings = builtins.mapAttrs (_: settings: {
-          installation_mode = "force_installed";
-          install_url =
-            "https://addons.mozilla.org/firefox/downloads/latest/${settings.pluginId}/latest.xpi";
-          default_area = settings.defaultArea;
-          private_browsing = settings.privateBrowsing;
-          allowed_types = [ "extension" ];
-        });
-      in {
-        ExtensionSettings = mkExtensionSettings {
-          "uBlock0@raymondhill.net" = {
-            pluginId = "ublock-origin";
-            defaultArea = "navbar";
-            privateBrowsing = true;
+      policies =
+        let
+          mkExtensionSettings = builtins.mapAttrs (
+            _: settings: {
+              installation_mode = "force_installed";
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/${settings.pluginId}/latest.xpi";
+              default_area = settings.defaultArea;
+              private_browsing = settings.privateBrowsing;
+              allowed_types = [ "extension" ];
+            }
+          );
+        in
+        {
+          ExtensionSettings = mkExtensionSettings {
+            "uBlock0@raymondhill.net" = {
+              pluginId = "ublock-origin";
+              defaultArea = "navbar";
+              privateBrowsing = true;
+            };
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+              pluginId = "bitwarden-password-manager";
+              defaultArea = "navbar";
+              privateBrowsing = true;
+            };
+            "addon@darkreader.org" = {
+              pluginId = "darkreader";
+              defaultArea = "menupanel";
+              privateBrowsing = true;
+            };
+            "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
+              pluginId = "yomitan";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
+            "sponsorBlocker@ajay.app" = {
+              pluginId = "sponsorblock";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
+            "myallychou@gmail.com" = {
+              pluginId = "youtube-recommended-videos";
+              defaultArea = "navbar";
+              privateBrowsing = false;
+            };
+            "{458160b9-32eb-4f4c-87d1-89ad3bdeb9dc}" = {
+              pluginId = "youtube-anti-translate";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
           };
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            pluginId = "bitwarden-password-manager";
-            defaultArea = "navbar";
-            privateBrowsing = true;
-          };
-          "addon@darkreader.org" = {
-            pluginId = "darkreader";
-            defaultArea = "menupanel";
-            privateBrowsing = true;
-          };
-          "{6b733b82-9261-47ee-a595-2dda294a4d08}" = {
-            pluginId = "yomitan";
-            defaultArea = "menupanel";
-            privateBrowsing = false;
-          };
-          "sponsorBlocker@ajay.app" = {
-            pluginId = "sponsorblock";
-            defaultArea = "menupanel";
-            privateBrowsing = false;
-          };
-          "myallychou@gmail.com" = {
-            pluginId = "youtube-recommended-videos";
-            defaultArea = "navbar";
-            privateBrowsing = false;
-          };
-          "{458160b9-32eb-4f4c-87d1-89ad3bdeb9dc}" = {
-            pluginId = "youtube-anti-translate";
-            defaultArea = "menupanel";
-            privateBrowsing = false;
-          };
-        };
 
-        AutofillAddressEnabled = true;
-        AutofillCreditCardEnabled = false;
-        DisableAppUpdate = true;
-        DisableFeedbackCommands = true;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DontCheckDefaultBrowser = true;
-        NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-        EnableTrackingProtection = {
-          Value = true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
-        };
-        Cookies = { Behavior = "reject-tracker-and-partition-foreign"; };
-        DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
-        DisableSetDesktopBackground = true;
-        DisplayBookmarksToolbar = "never";
+          AutofillAddressEnabled = true;
+          AutofillCreditCardEnabled = false;
+          DisableAppUpdate = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DontCheckDefaultBrowser = true;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = true;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
+          Cookies = {
+            Behavior = "reject-tracker-and-partition-foreign";
+          };
+          DefaultDownloadDirectory = "${config.home.homeDirectory}/Downloads";
+          DisableSetDesktopBackground = true;
+          DisplayBookmarksToolbar = "never";
 
-        Homepage = {
-          Locked = true;
-          StartPage = "previous-session";
-        };
+          Homepage = {
+            Locked = true;
+            StartPage = "previous-session";
+          };
 
-        GenerativeAI = {
-          Enabled = false;
-          Chatbot = false;
-          LinkPreviews = false;
-          TabGroups = false;
+          GenerativeAI = {
+            Enabled = false;
+            Chatbot = false;
+            LinkPreviews = false;
+            TabGroups = false;
+          };
         };
-      };
 
       profiles.default = {
         isDefault = true;
@@ -193,11 +210,13 @@ in {
           "workbench.colorTheme" = "Tokyo Night";
         };
 
-        keybindings = [{
-          key = "ctrl+'";
-          command = "workbench.action.terminal.toggleTerminal";
-          when = "terminal.active";
-        }];
+        keybindings = [
+          {
+            key = "ctrl+'";
+            command = "workbench.action.terminal.toggleTerminal";
+            when = "terminal.active";
+          }
+        ];
 
         extensions = with pkgs.vscode-extensions; [
           enkia.tokyo-night

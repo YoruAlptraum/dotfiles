@@ -261,8 +261,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 
-spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "eww open bar"
+
 spawn-at-startup "set-wallpaper"
 
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"

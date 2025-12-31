@@ -1,0 +1,60 @@
+(defwindow bar
+  
+  :monitor "0"
+  :geometry (geometry :x "0%"
+    :y "0px"
+    :width "350px"
+  :anchor "top center")
+  :reserve (struts :distance "20px" :side "top")
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    :orientation "horizontal"
+    :class "center-piece"
+    :spacing "1"
+    
+    (eventbox
+      :class "btn clock"
+      :width "110px"
+      :cursor "pointer"
+      :onclick "eww update show-seconds=${!show-seconds}"
+    "${show-seconds ? times : time}")
+    
+    (eventbox
+      :class "btn moji"
+      :width "110px"
+      :cursor "pointer"
+      :onclick "notify-send carpe diem"
+      :tooltip "carpe diem"
+    "^◕  ‿  ◕^")
+    
+    (eventbox
+      :class "btn calendar"
+      :width "110px"
+      :cursor "pointer"
+    "${date}")
+  )
+)
+
+(defvar bar-visible true)
+(defvar show-seconds false)
+
+(defpoll time :interval "1s"
+  :initial "--:-- ---"
+  :run-while bar-visible
+  `date +"%R %a"`
+)
+
+(defpoll times :interval "1s"
+  :initial "--:-- ---"
+  :run-while {show-seconds && bar-visible}
+  `date +"%R:%S"`
+)
+
+(defpoll date :interval "1s"
+  :initial "--- -- ----"
+  :run-while bar-visible
+  `date +"%b %d %Y"`
+)
+

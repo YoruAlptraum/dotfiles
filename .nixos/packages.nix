@@ -11,7 +11,6 @@
       fuzzel
       gimp
       libreoffice
-      dunst
       lutris
       vlc
       nomacs
@@ -36,6 +35,8 @@
       unzip
       unrar
       ripgrep
+      dunst # notifications
+      libnotify # notification library
       dotool # input automation
       cava # audio visualizer
       usbutils # usb utilities
@@ -56,6 +57,7 @@
       swww
       ly
       waybar
+      eww
 
       # Dependencies
       graalvmPackages.graalvm-ce
