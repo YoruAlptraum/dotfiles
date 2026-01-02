@@ -2,6 +2,7 @@
   font-size: 14px;
   background-color: transparent;
   font-weight: 600;    
+  color: #7fc8ff;  
 }
 
 .systray {
@@ -10,18 +11,25 @@
   border-bottom-right-radius: 15px;
 }
 
-.center-piece {
-  color: #7fc8ff;  
+.left-piece {
+  min-width: 300px;
+  color: #c7c7c7;
 }
 
-.btn {
+.center-piece {  
+  background-color: #000000;
+  border-radius: 0 0 15px 15px;  
+}
+
+.right-piece {
+  padding: 0 10px;
+  font-size: 12px;
+  border-bottom-left-radius: 15px;
   background-color: #000000;
 }
 
-.clock { 
-  border-radius: 0 0 0 15px;
-}
-
-.calendar{
-  border-radius: 0 0 15px 0;
+.div{
+  font-size:18px;
+  font-weight:300;
+  color: rgb(127, 200, 255, 0.6);
 }

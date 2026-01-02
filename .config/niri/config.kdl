@@ -262,7 +262,6 @@ layout {
 // which may be more convenient to use.
 
 spawn-sh-at-startup "eww open bar"
-
 spawn-at-startup "set-wallpaper"
 
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"

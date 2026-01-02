@@ -23,7 +23,6 @@
       :class "left-piece"
       :halign "start"
       :space-evenly false
-      :spacing "1"
       :hexpand true
       (tray)
     )
@@ -43,6 +42,8 @@
         :onclick "eww update show-seconds=${!show-seconds}"
       "${show-seconds ? times : time}")
       
+      (divider)
+      
       (eventbox
         :class "btn moji"
         :cursor "pointer"
@@ -50,6 +51,8 @@
         :onclick "notify-send carpe diem"
         :tooltip "carpe diem"
       "＾◉ ∀ ◉＾")
+      
+      (divider)
       
       (eventbox
         :class "btn calendar"
@@ -63,16 +66,25 @@
       :orientation "h"
       :class "right-piece"
       :halign "end"
-      :space-evenly false
       :spacing "1"
+      :space-evenly false
+      :hexpand true
       
       (eventbox
-        :class "btn"
-        :cursor "pointer"
-        :width "100"
-        :onclick "notify-send carpe diem"
-        :tooltip "carpe diem"
-      "")
+        :width "90"
+        :class "stats"
+        :tooltip "RAM: ${round(EWW_RAM.used_mem / 1073741824, 1)} GB / ${round(EWW_RAM.total_mem / 1073741824, 1)} GB"
+        "RAM: ${round(EWW_RAM.used_mem_perc,0)}%"
+      )
+      
+      (divider)
+      
+      (eventbox
+        :width "90"
+        :tooltip "CPU: ${round(EWW_CPU.avg,1)}%"
+        "CPU: ${round(EWW_CPU.avg,0)}%"
+        
+      )
     )
   )
 )
@@ -97,3 +109,10 @@
   :run-while bar-visible
   `date +"%b %d %Y"`
 )
+
+(defwidget divider []
+  (label :class "div" :text "|")
+)
+
+
+
