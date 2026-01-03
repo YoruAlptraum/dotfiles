@@ -71,8 +71,14 @@
       :hexpand true
       
       (eventbox
+        :width "160"
+        "${network-status}"
+      )
+      
+      (divider)
+      
+      (eventbox
         :width "90"
-        :class "stats"
         :tooltip "RAM: ${round(EWW_RAM.used_mem / 1073741824, 1)} GB / ${round(EWW_RAM.total_mem / 1073741824, 1)} GB"
         "RAM: ${round(EWW_RAM.used_mem_perc,0)}%"
       )
@@ -83,10 +89,13 @@
         :width "90"
         :tooltip "CPU: ${round(EWW_CPU.avg,1)}%"
         "CPU: ${round(EWW_CPU.avg,0)}%"
-        
       )
     )
   )
+)
+
+(defwidget divider []
+  (label :class "divider" :text "|")
 )
 
 (defvar bar-visible true)
@@ -110,9 +119,8 @@
   `date +"%b %d %Y"`
 )
 
-(defwidget divider []
-  (label :class "div" :text "|")
+(defpoll network-status :interval "10s"
+  :initial "N/A"
+  :run-while bar-visible
+  `nmcli -t -f STATE,TYPE  device status | grep -E 'ethernet|wifi'`
 )
-
-
-

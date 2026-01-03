@@ -11,12 +11,12 @@
       fuzzel
       gimp
       libreoffice
-      lutris
+      lutris # gaming platform
       vlc
       nomacs
       vscode
       qbittorrent
-      mcomix
+      mcomix # comic/manga reader
 
       # browsers
       brave
@@ -60,7 +60,7 @@
       eww
 
       # Dependencies
-      graalvmPackages.graalvm-ce
+      graalvmPackages.graalvm-ce # java vm
       gcc
       cargo
       nodejs
