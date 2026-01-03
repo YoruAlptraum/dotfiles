@@ -9,7 +9,6 @@
     (eventbox
       :class "btn systray-toggle"
       :cursor "pointer"
-      :width "20"
       :onclick "eww update reveal-tray=${!reveal-tray}"
       :tooltip {reveal-tray ? "close tray" : "open tray"}
       {reveal-tray ? "◀" : "▶"}
