@@ -82,7 +82,9 @@
         :style "padding: 0 10px;"
         
         (eventbox
-          "${network-status}"
+          :tooltip "Network Status"
+          :onclick "eww update show-bitrate=${!show-bitrate}"
+          "${show-bitrate ? '${round(EWW_NET.enp34s0.NET_UP / 1000, 1) } kB/s ↑ ${round(EWW_NET.enp34s0.NET_DOWN / 1000, 1) } kB/s ↓' : network-status}"
         )
       )
       
@@ -134,7 +136,7 @@
 
 (defpoll times :interval "1s"
   :initial "--:-- ---"
-  :run-while {show-seconds && bar-visible}
+  :run-while {bar-visible && show-seconds}
   `date +"%R:%S %a"`
 )
 
@@ -144,13 +146,16 @@
   `date +"%b %d %Y"`
 )
 
-(defpoll network-status :interval "10s"
+(defvar show-bitrate true)
+
+(defpoll network-status :interval "1s"
   :initial "N/A"
   :run-while bar-visible
   `nmcli -t -f STATE,TYPE  device status | grep -E 'ethernet|wifi'`
 )
 
 (defvar audio-vol "--")
+(defvar audio-icon "")
 (defvar mic-vol "--")
 
 (defwidget volume []
@@ -165,7 +170,7 @@
       :orientation "h"
       :halign "center"
       :cursor "pointer"
-      (label :text "Vol ${audio-vol}%")
+      (label :text "${audio-icon} ${audio-vol}%")
     )
     (eventbox
       :space-evenly false

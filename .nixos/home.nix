@@ -208,6 +208,7 @@ in
           "editor.formatOnSave" = true;
           "workbench.sideBar.location" = "right";
           "workbench.colorTheme" = "Tokyo Night";
+          "editor.fontFamily" = "'FiraCode Nerd Font Mono', 'monospace', monospace";
         };
 
         keybindings = [
