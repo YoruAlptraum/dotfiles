@@ -41,6 +41,7 @@
       cava # audio visualizer
       usbutils # usb utilities
       inotify-tools # file system monitoring
+      appimage-run # run appimages
 
       # Screenshotting/recording
       (flameshot.override { enableWlrSupport = true; })
