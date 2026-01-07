@@ -97,6 +97,15 @@ in
     }) configs;
   };
 
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
+    };
+  };
+
   programs = {
     zen-browser = {
       enable = true;
@@ -208,7 +217,7 @@ in
           "editor.formatOnSave" = true;
           "workbench.sideBar.location" = "right";
           "workbench.colorTheme" = "Tokyo Night";
-          "editor.fontFamily" = "'FiraCode Nerd Font Mono', 'monospace', monospace";
+          "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'monospace', monospace";
         };
 
         keybindings = [
