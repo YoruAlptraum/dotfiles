@@ -158,6 +158,11 @@ in
               defaultArea = "menupanel";
               privateBrowsing = false;
             };
+            "{0d7cafdd-501c-49ca-8ebb-e3341caaa55e}" = {
+              pluginId = "youtube-nonstop";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
           };
 
           AutofillAddressEnabled = true;
