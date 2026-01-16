@@ -1,4 +1,5 @@
 (include "bar/widgets/systray.yuck")
+(include "bar/widgets/audio.yuck")
 
 (defwindow bar
   :monitor "0"
@@ -116,7 +117,7 @@
       
       (divider)
       
-      (volume)
+      (audio)
     )
   )
 )
@@ -152,33 +153,4 @@
   :initial "N/A"
   :run-while bar-visible
   `nmcli -t -f STATE,TYPE  device status | grep -E 'ethernet|wifi'`
-)
-
-(defvar audio-vol "--")
-(defvar audio-icon "")
-(defvar mic-vol "--")
-
-(defwidget volume []
-  (box
-    :orientation "h"
-    :halign "center"
-    :style "padding: 0 10px;"
-    :spacing "8"
-    
-    (eventbox
-      :space-evenly false
-      :orientation "h"
-      :halign "center"
-      :cursor "pointer"
-      (label :text "${audio-icon} ${audio-vol}%")
-    )
-    (eventbox
-      :space-evenly false
-      :orientation "h"
-      :halign "center"
-      :cursor "pointer"
-      (label :text "Mic ${mic-vol}%")
-    )
-    
-  )
 )

@@ -1,0 +1,55 @@
+(deflisten audio-vol
+  :initial "0"
+  "bar/scripts/audio.sh"
+)
+
+(defvar mic-vol "0")
+
+;    
+; (defvar audio-icon "")
+(defvar audio-icon "")
+;  󰍭
+(defvar mic-icon "")
+
+(defwidget audio []
+  (box
+    :orientation "h"
+    :halign "center"
+    :style "padding: 0 10px;"
+    :spacing "10"
+    
+    ; Audio
+    (eventbox
+      :space-evenly false
+      :width "25"
+      :orientation "h"
+      :halign "center"
+      :cursor "pointer"
+      :tooltip "Volume: ${audio-vol}%"
+      :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      :onscroll "
+      if [[ '{}' == 'up' ]];
+      then wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ ;
+      else wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01- ;
+      fi
+      "
+      (label
+        :halign "center"
+        :text "${audio-icon}"
+      )
+    )
+    
+    ; Microphone
+    (eventbox
+      :space-evenly false
+      :width "25"
+      :orientation "h"
+      :halign "center"
+      :cursor "pointer"
+      (label
+        :halign "center"
+        :text "${mic-icon}"
+      )
+    )
+  )
+)
