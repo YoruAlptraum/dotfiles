@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-vol_icon="start"
+vol_icon=""
 vol=0
 low=33
 high=66
