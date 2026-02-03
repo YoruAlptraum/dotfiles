@@ -18,6 +18,7 @@
       qbittorrent
       mcomix # comic/manga reader
       obsidian
+      love
 
       # browsers
       brave
