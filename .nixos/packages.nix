@@ -17,6 +17,7 @@
       vscode
       qbittorrent
       mcomix # comic/manga reader
+      obsidian
 
       # browsers
       brave
