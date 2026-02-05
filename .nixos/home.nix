@@ -163,6 +163,11 @@ in
               defaultArea = "menupanel";
               privateBrowsing = false;
             };
+            "firefox-extension@steamdb.info" = {
+              pluginId = "steam-database";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
           };
 
           AutofillAddressEnabled = true;
