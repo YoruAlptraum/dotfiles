@@ -19,6 +19,7 @@
       mcomix # comic/manga reader
       obsidian
       love
+      anki
 
       # browsers
       brave
