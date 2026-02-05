@@ -232,6 +232,30 @@ in
             command = "workbench.action.terminal.toggleTerminal";
             when = "terminal.active";
           }
+          {
+            key = "ctrl+shift+h";
+            command = "-workbench.action.replaceInFiles";
+          }
+          {
+            key = "ctrl+shift+space";
+            command = "editor.action.triggerSuggest";
+            when = "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible";
+          }
+          {
+            key = "ctrl+space";
+            command = "-editor.action.triggerSuggest";
+            when = "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible";
+          }
+          {
+            key = "ctrl+shift+space";
+            command = "workbench.action.terminal.triggerSuggest";
+            when = "config.terminal.integrated.suggest.enabled && terminalFocus && terminalProcessSupported && !terminalSuggestWidgetVisible";
+          }
+          {
+            key = "ctrl+space";
+            command = "-workbench.action.terminal.triggerSuggest";
+            when = "config.terminal.integrated.suggest.enabled && terminalFocus && terminalProcessSupported && !terminalSuggestWidgetVisible";
+          }
         ];
 
         extensions = with pkgs.vscode-extensions; [
