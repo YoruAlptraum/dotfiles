@@ -160,6 +160,7 @@
   # configurations for steam/gaming
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   # audio/pipewire
