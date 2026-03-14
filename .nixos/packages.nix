@@ -60,7 +60,6 @@
       swaylock-effects
       swww
       ly
-      waybar
       eww
 
       # Dependencies

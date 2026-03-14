@@ -3,11 +3,11 @@
 
   inputs = {
     # stable channel
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    # unstable channel
-    nixpkgs-unstable.url = "github:/nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # stable channel
+    nixpkgs-stable.url = "github:/nixos/nixpkgs/nixos-25.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -17,26 +17,36 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, ... }: {
-    nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        {
-          nix.settings.experimental-features =
-            [ "nix-command" "flakes" ]; # enable flakes
-        }
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-        {
-          home-manager = {
-            extraSpecialArgs = { inherit inputs; };
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.yoru = import ./home.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }:
+    {
+      nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          {
+            nix.settings.experimental-features = [
+              "nix-command"
+              "flakes"
+            ]; # enable flakes
+          }
+          ./configuration.nix
+          inputs.home-manager.nixosModules.default
+          {
+            home-manager = {
+              extraSpecialArgs = { inherit inputs; };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.yoru = import ./home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
-  };
 }
