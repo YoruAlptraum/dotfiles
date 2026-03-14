@@ -61,6 +61,7 @@
       swww
       ly
       eww
+      noctalia-shell
 
       # Dependencies
       graalvmPackages.graalvm-ce # java vm

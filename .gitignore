@@ -3,11 +3,12 @@
 !.config/kitty
 !.config/nvim
 !.config/swappy
-!.config/waybar
 !.config/niri
 !.config/starship.toml
 !.config/btop/btop.conf
 !.config/fuzzel
 !.config/flameshot
 !.config/swaylock
+!.config/noctalia
+!.config/waybar
 !.config/eww

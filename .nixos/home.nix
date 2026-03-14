@@ -12,12 +12,13 @@ let
     kitty = "kitty";
     nvim = "nvim";
     swappy = "swappy";
-    waybar = "waybar";
     "starship.toml" = "starship.toml";
     niri = "niri";
     fuzzel = "fuzzel";
     flameshot = "flameshot";
     swaylock = "swaylock";
+    noctalia = "noctalia";
+    waybar = "waybar";
     eww = "eww";
   };
 
