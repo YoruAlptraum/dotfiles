@@ -155,7 +155,7 @@
                     "showPowerProfiles": false
                 },
                 {
-                    "displayMode": "onhover",
+                    "displayMode": "alwaysShow",
                     "iconColor": "primary",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
@@ -300,7 +300,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/yoru/.face",
+        "avatarImage": "/home/yoru/dotfiles/imgs/moonlight-sui.png",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "digital",
