@@ -217,6 +217,7 @@ in
           "middlemouse.paste" = false;
           "general.autoScroll" = true;
           "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
+          "zen.welcome-screen.seen" = true;
         };
       };
     };
