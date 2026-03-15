@@ -12,12 +12,13 @@ let
     kitty = "kitty";
     nvim = "nvim";
     swappy = "swappy";
-    waybar = "waybar";
     "starship.toml" = "starship.toml";
     niri = "niri";
     fuzzel = "fuzzel";
     flameshot = "flameshot";
     swaylock = "swaylock";
+    noctalia = "noctalia";
+    waybar = "waybar";
     eww = "eww";
   };
 
@@ -163,6 +164,11 @@ in
               defaultArea = "menupanel";
               privateBrowsing = false;
             };
+            "firefox-extension@steamdb.info" = {
+              pluginId = "steam-database";
+              defaultArea = "menupanel";
+              privateBrowsing = false;
+            };
           };
 
           AutofillAddressEnabled = true;
@@ -199,20 +205,17 @@ in
             LinkPreviews = false;
             TabGroups = false;
           };
-        };
 
-      profiles.default = {
-        isDefault = true;
-        name = "Default";
-        settings = {
-          "zen.workspaces.continue-where-left-off" = true;
-          "zen.tabs.show-newtab-vertical" = false;
-          "zen.tabs.vertical" = true;
-          "middlemouse.paste" = false;
-          "general.autoScroll" = true;
-          "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
+          Preferences = {
+            "zen.workspaces.continue-where-left-off" = true;
+            "zen.tabs.show-newtab-vertical" = false;
+            "zen.tabs.vertical" = true;
+            "middlemouse.paste" = false;
+            "general.autoScroll" = true;
+            "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
+            "zen.welcome-screen.seen" = true;
+          };
         };
-      };
     };
 
     vscode = {

@@ -25,15 +25,17 @@
       enable = true;
       type = "fcitx5";
       fcitx5 = {
-        settings.inputMethod = {
-          "Groups/0" = {
-            Name = "Default";
-            "Default Layout" = "us";
-            DefaultIM = "mozc";
+        settings = {
+          inputMethod = {
+            "Groups/0" = {
+              Name = "Default";
+              "Default Layout" = "us";
+              DefaultIM = "mozc";
+            };
+            "Groups/0/Items/0".Name = "keyboard-jp";
+            "Groups/0/Items/1".Name = "mozc";
+            GroupOrder."0" = "Default";
           };
-          "Groups/0/Items/0".Name = "keyboard-jp";
-          "Groups/0/Items/1".Name = "mozc";
-          GroupOrder."0" = "Default";
         };
         addons = with pkgs; [
           fcitx5-mozc
@@ -57,7 +59,7 @@
       LC_NUMERIC = "en_US.UTF-8";
       LC_PAPER = "en_US.UTF-8";
       LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+      LC_TIME = "ja_JP.UTF-8";
     };
   };
 
@@ -158,6 +160,7 @@
   # configurations for steam/gaming
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   # audio/pipewire
