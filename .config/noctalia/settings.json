@@ -63,6 +63,14 @@
         "widgets": {
             "center": [
                 {
+                    "hideWhenZero": false,
+                    "hideWhenZeroUnread": false,
+                    "iconColor": "primary",
+                    "id": "NotificationHistory",
+                    "showUnreadBadge": true,
+                    "unreadBadgeColor": "primary"
+                },
+                {
                     "clockColor": "primary",
                     "customFont": "",
                     "formatHorizontal": "HH:mm ddd, MMM dd",
@@ -72,19 +80,16 @@
                     "useCustomFont": false
                 },
                 {
-                    "hideWhenZero": false,
-                    "hideWhenZeroUnread": false,
-                    "iconColor": "primary",
-                    "id": "NotificationHistory",
-                    "showUnreadBadge": true,
-                    "unreadBadgeColor": "primary"
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultDuration": 0,
+                        "iconColor": "none",
+                        "textColor": "none"
+                    },
+                    "id": "plugin:timer"
                 }
             ],
             "left": [
-                {
-                    "iconColor": "primary",
-                    "id": "SessionMenu"
-                },
                 {
                     "icon": "rocket",
                     "iconColor": "primary",
@@ -130,7 +135,7 @@
                     "iconColor": "primary",
                     "id": "SystemMonitor",
                     "showCpuFreq": false,
-                    "showCpuTemp": true,
+                    "showCpuTemp": false,
                     "showCpuUsage": true,
                     "showDiskAvailable": false,
                     "showDiskUsage": false,
