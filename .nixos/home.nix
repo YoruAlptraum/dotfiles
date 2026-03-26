@@ -205,17 +205,20 @@ in
             LinkPreviews = false;
             TabGroups = false;
           };
-
-          Preferences = {
-            "zen.workspaces.continue-where-left-off" = true;
-            "zen.tabs.show-newtab-vertical" = false;
-            "zen.tabs.vertical" = true;
-            "middlemouse.paste" = false;
-            "general.autoScroll" = true;
-            "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
-            "zen.welcome-screen.seen" = true;
-          };
         };
+      profiles.default = {
+        isDefault = true;
+        settings = {
+          "zen.workspaces.continue-where-left-off" = true;
+          "zen.tabs.show-newtab-vertical" = false;
+          "zen.tabs.vertical" = true;
+          "middlemouse.paste" = false;
+          "general.autoScroll" = true;
+          "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
+          "zen.welcome-screen.seen" = true;
+          "zen.view.use-single-toolbar" = false;
+        };
+      };
     };
 
     vscode = {
