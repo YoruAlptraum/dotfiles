@@ -34,7 +34,7 @@
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeOverdrive": false,
-        "volumeStep": 5
+        "volumeStep": 1
     },
     "bar": {
         "autoHideDelay": 500,
