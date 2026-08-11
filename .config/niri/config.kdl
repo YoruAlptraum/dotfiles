@@ -371,7 +371,7 @@ binds {
 
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
+   // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
     // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
@@ -603,6 +603,7 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print hotkey-overlay-title=null { spawn-sh "flameshot gui"; }
+    Mod+Shift+S { spawn-sh "flameshot gui"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
